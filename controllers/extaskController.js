@@ -13,7 +13,7 @@ exports.addTask = async (req, res) => {
         REM1,
         ATK_DD_STA1
     } = req.body;
-
+    let conn;
     // Ensure session data is available
     if (!req.session || !req.session.user) {
         return res.status(401).send('Unauthorized: No session data found');
@@ -33,7 +33,8 @@ exports.addTask = async (req, res) => {
     let Primary_Roles, Primary_Email, Primary_ID, Primary_Name;
 
     try {
-        const [teamLead] = await db.query(
+        conn = await db.getConnection();
+        const [teamLead] = await conn.query(
             'SELECT Department_Desigination, Email, Employee_Code, Employee_Name FROM employee WHERE Employee_Name = ? AND Department_Desigination = "Team Lead"',
             [ATK_DD_EXE1]
         );
@@ -52,6 +53,8 @@ exports.addTask = async (req, res) => {
     } catch (error) {
         console.error('Error fetching Team Lead details:', error);
         return res.status(500).send('Server error');
+    }finally {
+        if (conn) conn.end();
     }
 
     // Multer stores the file path in `req.file` if a file is uploaded
@@ -71,9 +74,9 @@ exports.addTask = async (req, res) => {
     }
 
     const Financial_Year = financialYearResults[0].Financial_Year;
-
+    
     try {
-        const [result] = await db.query(
+        const result = await db.query(
             `INSERT INTO upload_task (
                 Executive_Name, Company_Id, Company_Name, Document_Type, Document_Name, Doument_URL, Task_Name, Task_Details, 
                 Remarks, Status, Ip_Mac, Financial_Year, Primary_Roles, Primary_Email, Primary_ID, Primary_Name, 
@@ -97,9 +100,11 @@ exports.addTask = async (req, res) => {
 
 
 exports.getexecutiveDetail = async (req, res) => {
+    let conn;
      try {
+        conn = await db.getConnection();
         // Fetch data from the assign_task table
-        const [rows] = await db.query(`
+        const rows = await conn.query(`
             SELECT Company_Name, Task_Name, Document_Name, Remarks, Status 
             FROM assign_task
         `);
@@ -108,16 +113,22 @@ exports.getexecutiveDetail = async (req, res) => {
     } catch (error) {
         console.error('Database fetch error:', error);
         res.status(500).send('Server error');
+    }finally {
+        if (conn) conn.end();
     }
 };
 
 exports.getTasks = async (req, res) => {
+    let conn;
     try {
-        const [rows] = await db.query('SELECT * FROM upload_task');
+        conn = await db.getConnection();
+        const rows = await conn.query('SELECT * FROM upload_task');
         res.json(rows);
     } catch (error) {
         console.error('Database fetch error:', error);
         res.status(500).send('Server error');
+    }finally {
+        if (conn) conn.end();
     }
 };
 

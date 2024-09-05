@@ -23,9 +23,11 @@ const upload = multer({ storage: storage });
 router.post('/add1', upload.single('DURL1'), taskController.addTask);
 router.get('/getTask1',taskController.getTasks)
 router.get('/get-exe', async (req, res) => {
+    let conn;
     try {
+        conn = await db.getConnection();
         // Fetch distinct executives from the groups table, with backticks around the table name
-        const [rows] = await db.query(`
+        const rows = await conn.query(`
             SELECT DISTINCT Select_Lead AS name 
             FROM \`groups\` 
             WHERE Select_Lead IS NOT NULL
@@ -35,14 +37,18 @@ router.get('/get-exe', async (req, res) => {
     } catch (err) {
         console.error('SQL error:', err.sqlMessage || err); // Log the specific SQL error message
         res.status(500).send('Server error');
+    }finally {
+        if (conn) conn.end();
     }
 });
 
 
 
 router.get('/get-comp', async (req, res) => {
+    let conn;
     try {
-        const [rows] = await db.query(`
+        conn = await db.getConnection();
+        const rows = await conn.query(`
             SELECT Company_Id AS id, Company_Name AS name FROM assign_task
         `);
 
@@ -50,12 +56,16 @@ router.get('/get-comp', async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
+    }finally {
+        if (conn) conn.end();
     }
 });
 
 router.get('/get-doc-types', async (req, res) => {
+    let conn;
     try {
-        const [rows] = await db.query(`
+        conn = await db.getConnection();
+        const rows = await conn.query(`
             SELECT Column_Description AS name FROM final_module 
             WHERE Column_Name = 'Document Type'
         `);
@@ -64,13 +74,17 @@ router.get('/get-doc-types', async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
+    }finally {
+        if (conn) conn.end();
     }
 });
 router.delete('/delete/:id', async (req, res) => {
     const taskId = req.params.AT_ID;
+    let conn;
     try {
+        conn = await db.getConnection();
         // Replace with your database query to delete the task
-        const result = await db.query('DELETE FROM assign_task WHERE AT_ID = ?', [taskId]);
+        const result = await conn.query('DELETE FROM assign_task WHERE AT_ID = ?', [taskId]);
 
         if (result.affectedRows === 0) {
             return res.status(404).json({ message: 'Task not found' });
@@ -80,13 +94,17 @@ router.delete('/delete/:id', async (req, res) => {
     } catch (error) {
         console.error('Error deleting task:', error);
         res.status(500).json({ error: 'Failed to delete task' });
+    }finally {
+        if (conn) conn.end();
     }
 });
 
 router.delete('/delete1/:id', async (req, res) => {
     const taskId1 = req.params.id;
+    let conn;
     try {
-        const result = await db.query('DELETE FROM upload_task WHERE UT_ID = ?', [taskId1]);
+        conn = await db.getConnection();
+        const result = await conn.query('DELETE FROM upload_task WHERE UT_ID = ?', [taskId1]);
         if (result.affectedRows === 0) {
             return res.status(404).json({ message: 'Task not found' });
         }
@@ -94,13 +112,17 @@ router.delete('/delete1/:id', async (req, res) => {
     } catch (error) {
         console.error('Database delete error:', error);
         res.status(500).send('Server error');
+    }finally {
+        if (conn) conn.end();
     }
 });
 
 router.get('/edit/:id', async (req, res) => {
     const uploadId = req.params.id;
+    let conn;
     try {
-        const [rows] = await db.query('SELECT * FROM upload_task WHERE UT_ID  = ?', [uploadId]);
+        conn = await db.getConnection();
+        const rows = await conn.query('SELECT * FROM upload_task WHERE UT_ID  = ?', [uploadId]);
         if (rows.length === 0) {
             return res.status(404).json({ message: 'task not found' });
         }
@@ -108,6 +130,8 @@ router.get('/edit/:id', async (req, res) => {
     } catch (error) {
         console.error('Database fetch error:', error);
         res.status(500).send('Server error');
+    }finally {
+        if (conn) conn.end();
     }
 });
 
