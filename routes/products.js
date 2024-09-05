@@ -22,9 +22,12 @@ router.post('/add', async (req, res) => {
     try {
         const query = `INSERT INTO products (Service_Type, Amount) VALUES (?, ?)`;
         const values = [STD, AMT];
-        const result = await db.query(query, values); // MariaDB returns the result as an array
+        const result = await db.query(query, values);
+        const resultString = JSON.stringify(result, (key, value) =>
+            typeof value === 'bigint' ? value.toString() : value
+        ); // MariaDB returns the result as an array
 
-        console.log("Insert Result: ", JSON.stringify(result));
+        console.log("Insert Result: ", resultString);
 
         res.redirect('/ADMIN/products.html'); // Redirect to the products page or any other appropriate page
     } catch (error) {
