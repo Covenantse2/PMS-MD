@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Add Company</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" />
+
+    <!-- Daterangepicker css -->
+    <link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css" />
+
+    <!-- Vector Map css -->
+    <link rel="stylesheet" href="../assets/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" />
+
+    <!-- Theme Config Js -->
+    <script src="../assets/js/hyper-config.js"></script>
+
+    <!-- App css -->
+    <link href="../assets/css/app-saas.min.css" rel="stylesheet" type="text/css" id="app-style" />
+
+    <!-- Icons css -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <style>
+    .border-danger {
+        border-color: #dc3545 !important;
+    }
+    .text-danger {
+        color: #dc3545;
+    }
+    </style>
+
+  <body>
+    <!-- Begin page -->
+    <div class="wrapper">
+      <!-- ========== Topbar Start ========== -->
+      <div class="navbar-custom">
+        <div class="topbar container-fluid">
+          <div class="d-flex align-items-center gap-lg-2 gap-1">
+            <!-- Topbar Brand Logo -->
+            <div class="logo-topbar">
+              <!-- Logo light -->
+              <a href="home.html" class="logo-light">
+                 <span class="logo-lg">
+                  <img src="../assets/images/pm.png" alt="logo" />
+                </span>
+                <span class="logo-sm">
+                  <img src="../assets/images/logo-sm.png" alt="small logo" />
+                </span>
+              </a>
+
+              <!-- Logo Dark -->
+              <!--<a href="home.html" class="logo-dark">
+                <span class="logo-lg">
+                  <img src="../assets/images/logo-dark.png" alt="dark logo" />
+                </span>
+                <span class="logo-sm">
+                  <img src="../assets/images/logo-dark-sm.png" alt="small logo" />
+                </span>
+              </a>-->
+            </div>
+
+            <!-- Sidebar Menu Toggle Button -->
+            <button class="button-toggle-menu">
+              <i class="mdi mdi-menu"></i>
+            </button>
+
+            <!-- Horizontal Menu Toggle Button -->
+            <button class="navbar-toggle" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+              <div class="lines">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </button>
+          </div>
+
+          <ul class="topbar-menu d-flex align-items-center gap-3">
+            <li class="dropdown">
+              <a class="nav-link dropdown-toggle arrow-none plus" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                <span class="align-middle d-lg-inline-block span title"> + </span>
+                <span class="title">Create menu</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated">
+                <!-- item-->
+               <a href="addcompany.html" class="dropdown-item">
+                  <span class="align-middle">+ Company</span>
+                </a>
+
+                <!-- item-->
+                <a href="addemployees.html" class="dropdown-item">
+                  <span class="align-middle">+ Employee</span>
+                </a>
+                <!-- item-->
+                <a href="addcustomers.html" class="dropdown-item">
+                  <span class="align-middle">+ Customers</span>
+                </a>
+              </div>
+            </li>
+
+            <li class="dropdown notification-list">
+              <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                <span class="mdi mdi-magnify search-icon span" style="font-size: 23px;"></span>
+                <span class="title">Search</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg py-0">
+                <div class="p-2 border-top-0 border-start-0 border-end-0 border-dashed border">
+                  <form class="search-form">
+                    <div class="search-form-div">
+                      <span class="mdi mdi-magnify search-icon" style="font-size: 23px;"></span>
+                      <input type="text" />
+                      <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <div class="search-form-span">
+                      <p>Search <i class="fa-regular fa-folder-open"></i></p>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </li>
+
+            <li class="d-none d-sm-inline-block">
+              <a class="nav-link" data-bs-toggle="offcanvas" href="#notify-me">
+                <i class="ri-notification-3-line font-22"></i>
+              </a>
+            </li>
+
+            <li class="d-none d-sm-inline-block">
+              <a class="nav-link" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
+                <i class="ri-settings-3-line font-22"></i>
+              </a>
+            </li>
+
+            <li class="d-none d-sm-inline-block">
+              <div class="nav-link" id="light-dark-mode" data-bs-toggle="tooltip" data-bs-placement="left" title="Theme Mode">
+                <i class="ri-moon-line font-22"></i>
+              </div>
+            </li>
+
+            <li class="d-none d-md-inline-block">
+              <a class="nav-link" href="#" data-toggle="fullscreen">
+                <i class="ri-fullscreen-line font-22"></i>
+              </a>
+            </li>
+
+            <li class="dropdown">
+              <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                <span class="account-user-avatar">
+                  <img src="../assets/images/users/avatar-1.jpg" alt="user-image" width="32" class="rounded-circle" />
+                </span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
+                <!-- item-->
+                <!-- item-->
+                <div class="dropdown-header noti-title">
+                  <h6 class="text-overflow m-0">Welcome !</h6>
+                </div>
+
+             
+
+                <!-- item-->
+                <a href="../index.html" class="dropdown-item" onclick="myFunction()">
+                  <i class="mdi mdi-logout me-1"></i>
+                  <span>Logout</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- ========== Topbar End ========== -->
+
+      <!-- ========== Left Sidebar Start ========== -->
+      <div class="leftside-menu">
+        <!-- Brand Logo Light -->
+        <a href="index.html" class="logo logo-light">
+          <span class="logo-lg">
+            <img src="../assets/images/pm.png" style="width: 180px;height: 30px;" alt="logo" />
+          </span>
+          <span class="logo-sm">
+            <img src="../assets/images/logo-sm.png" alt="small logo" />
+          </span>
+        </a>
+
+        <!-- Sidebar Hover Menu Toggle Button -->
+        <div class="button-sm-hover" data-bs-toggle="tooltip" data-bs-placement="right" title="Show Full Sidebar">
+          <i class="ri-checkbox-blank-circle-line align-middle"></i>
+        </div>
+
+        <!-- Full Sidebar Menu Close Button -->
+        <div class="button-close-fullsidebar">
+          <i class="ri-close-fill align-middle"></i>
+        </div>
+
+        <!-- Sidebar -left -->
+        <div class="h-100" id="leftside-menu-container" data-simplebar>
+          <!-- Leftbar User -->
+          <div class="leftbar-user">
+            <a href="#">
+              <img src="../assets/images/users/avatar-1.jpg" alt="user-image" height="42" class="rounded-circle shadow-sm" />
+            </a>
+          </div>
+
+          <!--- Sidemenu -->
+          <ul class="side-nav">
+            <li class="side-nav-title">My Work</li>
+
+          <li class="side-nav-item">
+              <a href="../ADMIN/home.html" class="side-nav-link">
+                <i class="ri-bar-chart-box-fill"></i>
+
+                <span> Dashboard </span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="../ADMIN/MasterData.html" class="side-nav-link">
+                <i class=" ri-funds-box-fill  "></i>
+                <span>Master Data</span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="../ADMIN/products.html" class="side-nav-link">
+                <i class=" ri-funds-box-fill  "></i>
+                <span>Products</span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="../ADMIN/company.html" class="side-nav-link">
+                <i class="ri-send-plane-fill"></i>
+                <span> Company</span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="../ADMIN/employees.html" class="side-nav-link">
+                <i class="ri-group-fill"></i>
+                <span>Employee</span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="../ADMIN/groups.html" class="side-nav-link">
+                <i class="ri-team-fill"></i>
+                <span>Groups</span>
+              </a>
+            </li>
+         
+           
+            <li class="side-nav-item">
+              <a href="../ADMIN/customers.html" class="side-nav-link">
+                <i class="ri-account-box-fill"></i>
+                <span>Customer</span>
+              </a>
+            </li>
+
+            <li class="side-nav-item">
+              <a href="../ADMIN/cutomerdocuments.html" class="side-nav-link">
+                <i class="ri-contacts-book-fill"></i>
+                <span>Customer Documents </span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="../ADMIN/filesize.html" class="side-nav-link">
+                <i class="ri-contacts-book-fill"></i>
+                <span>File Size</span>
+              </a>
+            </li>
+            
+            
+            
+       
+            
+          </ul>
+          <!--- End Sidemenu -->
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <!-- ========== Left Sidebar End ========== -->
+
+      <!-- ============================================================== -->
+      <!-- Start Page Content here -->
+      <!-- ============================================================== -->
+
+      <div class="content-page">
+        <div class="content">
+          <!-- Start Content-->
+          <div class="container-fluid">
+            <!-- start page title -->
+            <div class="row">
+              <div class="col-12">
+                <div class="page-title-box">
+                  <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                      <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                      <li class="breadcrumb-item active"><a href="javascript: void(0);">Company</a></li>
+                    </ol>
+                  </div>
+                  <h4 class="page-title">Add Company</h4>
+                </div>
+              </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row mb-2">
+                      <div class="form">
+                        <form action="/company/add" method="POST" enctype="multipart/form-data">
+                          <div class="text-xl-end mt-xl-0 mt-2">
+                            <button type="submit" onclick="return validateForm('save')" class="btn btn-primary mb-2 me-2">Save</button>
+
+                            <div id="info-alert-modal2" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                              <div class="modal-dialog modal-sm modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-body p-4">
+                                    <div class="text-center">
+                                      <p class="mt-2"><i class="ri-check-line text-info h1"></i></p>
+                                      <img src="../assets/images/admin.png" style="width: 150px;" />
+                                      <p class="mt-3">Company Details Saved Successfully !</p>
+                                      <button type="button" class="btn btn-info my-2" data-bs-dismiss="modal">Okay</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <button type="button" onclick="return validateForm('save-new')" class="btn btn-light mb-2 me-2">Save & New</button>
+
+                            <div id="info-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                              <div class="modal-dialog modal-sm modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-body p-4">
+                                    <div class="text-center">
+                                      <p class="mt-2"><i class="ri-check-line text-info h1"></i></p>
+                                      <img src="../assets/images/admin.png" style="width: 150px;" />
+                                      <p class="mt-3">Company Details Saved Successfully !</p>
+                                      <button type="button" class="btn btn-info my-2" data-bs-dismiss="modal">Okay</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <button type="button" onclick="return validateForm('cancel')" class="btn btn-light mb-2 me-2">Cancel</button>
+
+                            <div id="info-alert-modal1" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                              <div class="modal-dialog modal-sm modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-body p-4">
+                                    <div class="text-center">
+                                      <p class="mt-2"><i class="ri-alert-line text-info h1"></i></p>
+                                      <img src="../assets/images/admin.png" style="width: 150px;" />
+                                      <p class="mt-3">
+                                        Process Cancelled ! <br />
+                                        (Details Not Saved)
+                                      </p>
+                                      <button type="button" class="btn btn-info my-2" data-bs-dismiss="modal">Okay</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <p style="font-weight: bold;">Company Information</p>
+
+                          <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-6">
+                              <label class="form-label">Company Name</label>
+                              <input type="text" class="form-control" placeholder="Company Name" name="CCP_CN" runat="server" required />
+                            </div>
+                            <div class="col-md-6">
+                              <label class="form-label">Company Account ID</label>
+                              <input type="text" class="form-control" placeholder="Company Account ID" name="CCP_AID" runat="server" required />
+                            </div>
+                          </div>
+
+                          <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-6">
+                              <label class="form-label">Phone</label>
+                              <input type="text" class="form-control" placeholder="Phone" name="CCP_PHN" runat="server" />
+                            </div>
+                            <div class="col-md-6">
+                              <label class="form-label">Email</label>
+                              <input type="email" class="form-control" placeholder="Email" name="CCP_EMAIL" runat="server" />
+                            </div>
+                          </div>
+                          <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-6">
+                              <label class="form-label">Website</label>
+                              <input type="text" class="form-control" placeholder="website" name="CCP_WEB" runat="server" required/>
+                            </div>
+                            <div class="col-md-6">
+                              <label class="form-label">Fax</label>
+                              <input type="text" class="form-control" placeholder="Fax" name="CCP_FAX" runat="server" required/>
+                            </div>
+                          </div>
+
+
+                          <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-6">
+                              <label class="form-label">No of Employees</label>
+                              <input type="text" class="form-control" placeholder="No of Employees" name="CCP_NOE" runat="server" required/>
+                            </div>
+                            <div class="col-md-6">
+                              <label class="form-label">Annual Revenue</label>
+                              <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <select class="form-select" name="CCP_DD_AMO" id="CCP_DD_AMO" runat="server">
+                                    <option selected value="ARS"><-Select-></option>
+                                    
+                                  </select>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Annual Revenue" name="CCP_AR" runat="server" required/>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-6">
+                              <label class="form-label">Skype Id</label>
+                              <input type="text" class="form-control" placeholder="Skype Id" name="CCP_SKY" runat="server" required/>
+                            </div>
+                          </div>
+
+                          <p class="mt-2" style="font-weight: bold;">TAX Information</p>
+
+                          <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-6">
+                              <label class="form-label">GST/VAT No</label>
+                              <input type="text" class="form-control" placeholder="TAX No" name="CCP_GST" runat="server" required/>
+                            </div>
+                            <div class="col-md-6">
+                              <label class="form-label">Business PAN</label>
+                              <input type="text" class="form-control" placeholder="PAN No" name="CCP_PAN" runat="server" required/>
+                            </div>
+                          </div>
+
+                          <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-6">
+                              <label class="form-label">Enable TAX</label>
+                              <select class="form-select" name="CCP_DD_ETAX" id="CCP_DD_ETAX" runat="server">
+                                <option selected value="ETAX"><-Select-></option>
+                             
+                              </select>
+                            </div>
+                            <div class="col-md-6">
+                              <label class="form-label">Enable TDS</label>
+                              <select class="form-select" name="CCP_DD_ETDS" id="CCP_DD_ETDS" runat="server">
+                                <option selected value="CCP_DD_ETDS"><-Select-></option>
+                                
+                              </select>
+                            </div>
+                          </div>
+
+                          <p class="mt-2" style="font-weight: bold;">Bank Details</p>
+
+                          <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-6">
+                              <label class="form-label">Bank Name</label>
+                              <input type="text" class="form-control" placeholder="Bank Name" name="CCP_BKN" runat="server" required/>
+                            </div>
+                            <div class="col-md-6">
+                              <label class="form-label">Branch Name</label>
+                              <input type="text" class="form-control" placeholder="Branch Name" name="CCP_BRN" runat="server" required/>
+                            </div>
+                          </div>
+
+                          <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-6">
+                              <label class="form-label">CRN ID</label>
+                              <input type="text" class="form-control" placeholder="CRN ID" name="CCP_CRN" runat="server" required/>
+                            </div>
+                            <div class="col-md-6">
+                              <label class="form-label">Account No</label>
+                              <input type="text" class="form-control" placeholder="Account No" name="CCP_ACTNO" runat="server" required/>
+                            </div>
+                          </div>
+                          <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-6">
+                              <label class="form-label">IFSC Code</label>
+                              <input type="text" class="form-control" placeholder="IFSC Code" name="IFSC" runat="server" required/>
+                            </div>
+                          </div>
+
+                          <p style="font-weight: bold; margin-top: 16px;">Address Information</p>
+                          <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-6">
+                              <label class="form-label">Door No/Building</label>
+                              <input type="text" class="form-control" placeholder="Door No/Building" name="CCP_DNO" runat="server" required/>
+                            </div>
+                            <div class="col-md-6">
+                              <label class="form-label">Street</label>
+                              <input type="text" class="form-control" placeholder="Street" name="CCP_STR" runat="server" required/>
+                            </div>
+                          </div>
+                          <div class="row" style="margin-top: 10px;">
+                           
+                            <div class="col-md-6">
+                              <label class="form-label">City</label>
+                              <input type="text" class="form-control" placeholder="City" name="CCP_CIT" runat="server" required/>
+                            </div>
+                            <div class="col-md-6">
+                              <label class="form-label">State</label>
+                              <input type="text" class="form-control" placeholder="State" name="CCP_STA" runat="server" required/>
+                            </div>
+                          </div>
+                          <div class="row" style="margin-top: 10px;">
+                           
+                            <div class="col-md-6">
+                              <label class="form-label">Zipcode</label>
+                              <input type="text" class="form-control" placeholder="Zipcode" name="CCP_ZIP" runat="server" required/>
+                            </div>
+                            <div class="col col-md-6">
+                              <label class="form-label">Country</label>
+                              <input type="text" class="form-control" placeholder="Country" name="CCP_COU" runat="server" required/>
+                            </div>
+                          </div>
+                         
+
+                          <p style="font-weight: bold; margin-top: 20px;">Additional Information</p>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <label class="form-label">Description</label>
+                              <textarea class="form-control" placeholder="Description" name="CCP_DES" runat="server" required></textarea>
+                            </div>
+                          </div>
+
+                          <p style="font-weight: bold; margin-top: 20px;">Upload Logo</p>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label class="form-label">Company Logo</label>
+                              <input type="file" class="form-control"  name="Company_Logo" runat="server" required/>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <!-- end col-->
+                  </div>
+                </div>
+                <!-- end card-body-->
+              </div>
+              <!-- end card-->
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- container -->
+      </div>
+
+      <!-- Footer Start -->
+      <footer class="footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="text-md-end footer-links d-none d-md-block">
+                <p>Copyright © 2024 PM. All Rights Reserved. Designed by <a href="https://covenanttecs.com/" target="_blank">Covenant Technologies</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- end Footer -->
+
+      <!-- ============================================================== -->
+      <!-- End Page content -->
+      <!-- ============================================================== -->
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Theme Settings -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="theme-settings-offcanvas">
+      <div class="d-flex align-items-center bg-primary p-3 offcanvas-header">
+        <h5 class="text-white m-0">Theme Settings</h5>
+        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+
+      <div class="offcanvas-body p-0">
+        <div data-simplebar class="h-100">
+          <div class="card mb-0 p-3">
+            <h5 class="mt-0 font-16 fw-bold mb-3">Choose Layout</h5>
+            <div class="row">
+              <div class="col-4">
+                <div class="form-check card-radio">
+                  <input id="customizer-layout01" name="data-layout" type="radio" value="vertical" class="form-check-input" />
+                  <label class="form-check-label p-0 avatar-md w-100" for="customizer-layout01">
+                    <span class="d-flex h-100">
+                      <span class="flex-shrink-0">
+                        <span class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
+                          <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
+                          <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                          <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                          <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                          <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                        </span>
+                      </span>
+                      <span class="flex-grow-1">
+                        <span class="d-flex h-100 flex-column">
+                          <span class="bg-light d-block p-1"></span>
+                        </span>
+                      </span>
+                    </span>
+                  </label>
+                </div>
+                <h5 class="font-14 text-center text-muted mt-2">Vertical</h5>
+              </div>
+            </div>
+
+            <h5 class="my-3 font-16 fw-bold">Color Scheme</h5>
+
+            <div class="colorscheme-cardradio">
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check card-radio">
+                    <input class="form-check-input" type="radio" name="data-bs-theme" id="layout-color-light" value="light" />
+                    <label class="form-check-label p-0 avatar-md w-100" for="layout-color-light">
+                      <div id="sidebar-size">
+                        <span class="d-flex h-100">
+                          <span class="flex-shrink-0">
+                            <span class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
+                              <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            </span>
+                          </span>
+                          <span class="flex-grow-1">
+                            <span class="d-flex h-100 flex-column bg-white rounded-2">
+                              <span class="bg-light d-block p-1"></span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div id="topnav-color" class="bg-white rounded-2 h-100">
+                        <span class="d-flex h-100 flex-column">
+                          <span class="bg-light d-flex p-1 align-items-center border-bottom border-secondary border-opacity-25">
+                            <span class="d-block p-1 bg-dark-lighten rounded me-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-auto"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                          </span>
+                          <span class="d-flex h-100 flex-column bg-white rounded-2">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Light</h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check card-radio">
+                    <input class="form-check-input" type="radio" name="data-bs-theme" id="layout-color-dark" value="dark" />
+                    <label class="form-check-label p-0 avatar-md w-100 bg-black" for="layout-color-dark">
+                      <div id="sidebar-size">
+                        <span class="d-flex h-100">
+                          <span class="flex-shrink-0">
+                            <span class="bg-light d-flex h-100 flex-column p-1 px-2">
+                              <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
+                              <span class="d-block border border-secondary border-opacity-25 border-3 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-secondary border-opacity-25 border-3 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-secondary border-opacity-25 border-3 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-secondary border-opacity-25 border-3 rounded w-100 mb-1"></span>
+                            </span>
+                          </span>
+                          <span class="flex-grow-1">
+                            <span class="d-flex h-100 flex-column">
+                              <span class="bg-light d-block p-1"></span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div id="topnav-color">
+                        <span class="d-flex h-100 flex-column">
+                          <span class="bg-light-lighten d-flex p-1 align-items-center border-bottom border-opacity-25 border-primary border-opacity-25">
+                            <span class="d-block p-1 bg-dark-lighten rounded me-1"></span>
+                            <span class="d-block border border-primary border-opacity-25 border-3 rounded ms-auto"></span>
+                            <span class="d-block border border-primary border-opacity-25 border-3 rounded ms-1"></span>
+                            <span class="d-block border border-primary border-opacity-25 border-3 rounded ms-1"></span>
+                            <span class="d-block border border-primary border-opacity-25 border-3 rounded ms-1"></span>
+                          </span>
+                          <span class="bg-light-lighten d-block p-1"></span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Dark</h5>
+                </div>
+              </div>
+            </div>
+
+            <div id="layout-width">
+              <h5 class="my-3 font-16 fw-bold">Layout Mode</h5>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check card-radio">
+                    <input class="form-check-input" type="radio" name="data-layout-mode" id="layout-mode-fluid" value="fluid" />
+                    <label class="form-check-label p-0 avatar-md w-100" for="layout-mode-fluid">
+                      <div id="sidebar-size">
+                        <span class="d-flex h-100">
+                          <span class="flex-shrink-0">
+                            <span class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
+                              <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            </span>
+                          </span>
+                          <span class="flex-grow-1">
+                            <span class="d-flex h-100 flex-column rounded-2">
+                              <span class="bg-light d-block p-1"></span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div id="topnav-color">
+                        <span class="d-flex h-100 flex-column">
+                          <span class="bg-light d-flex p-1 align-items-center border-bottom border-secondary border-opacity-25">
+                            <span class="d-block p-1 bg-dark-lighten rounded me-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-auto"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                          </span>
+                          <span class="bg-light d-block p-1"></span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Fluid</h5>
+                </div>
+                <div class="col-4" id="layout-boxed">
+                  <div class="form-check card-radio">
+                    <input class="form-check-input" type="radio" name="data-layout-mode" id="layout-mode-boxed" value="boxed" />
+                    <label class="form-check-label p-0 avatar-md w-100 px-2" for="layout-mode-boxed">
+                      <div id="sidebar-size" class="border-start border-end">
+                        <span class="d-flex h-100">
+                          <span class="flex-shrink-0">
+                            <span class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
+                              <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            </span>
+                          </span>
+                          <span class="flex-grow-1">
+                            <span class="d-flex h-100 flex-column rounded-2">
+                              <span class="bg-light d-block p-1"></span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div id="topnav-color" class="border-start border-end h-100">
+                        <span class="d-flex h-100 flex-column">
+                          <span class="bg-light d-flex p-1 align-items-center border-bottom border-secondary border-opacity-25">
+                            <span class="d-block p-1 bg-dark-lighten rounded me-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-auto"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                          </span>
+                          <span class="bg-light d-block p-1"></span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Boxed</h5>
+                </div>
+
+                <div class="col-4" id="layout-detached">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input class="form-check-input" type="radio" name="data-layout-mode" id="data-layout-detached" value="detached" />
+                    <label class="form-check-label p-0 avatar-md w-100" for="data-layout-detached">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-flex p-1 align-items-center border-bottom">
+                          <span class="d-block p-1 bg-dark-lighten rounded me-1"></span>
+                          <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-auto"></span>
+                          <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                          <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                          <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                        </span>
+                        <span class="d-flex h-100 p-1 px-2">
+                          <span class="flex-shrink-0">
+                            <span class="bg-light d-flex h-100 flex-column p-1 px-2">
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100"></span>
+                            </span>
+                          </span>
+                        </span>
+                        <span class="bg-light d-block p-1 mt-auto px-2"></span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Detached</h5>
+                </div>
+              </div>
+            </div>
+
+            <h5 class="my-3 font-16 fw-bold">Topbar Color</h5>
+
+            <div class="row">
+              <div class="col-4">
+                <div class="form-check card-radio">
+                  <input class="form-check-input" type="radio" name="data-topbar-color" id="topbar-color-light" value="light" />
+                  <label class="form-check-label p-0 avatar-md w-100" for="topbar-color-light">
+                    <div id="sidebar-size">
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
+                            <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+
+                    <div id="topnav-color">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-flex p-1 align-items-center border-bottom border-secondary border-opacity-25">
+                          <span class="d-block p-1 bg-dark-lighten rounded me-1"></span>
+                          <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-auto"></span>
+                          <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                          <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                          <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                        </span>
+                        <span class="bg-light d-block p-1"></span>
+                      </span>
+                    </div>
+                  </label>
+                </div>
+                <h5 class="font-14 text-center text-muted mt-2">Light</h5>
+              </div>
+
+              <div class="col-4" style="--ct-dark-rgb: 64, 73, 84;">
+                <div class="form-check card-radio">
+                  <input class="form-check-input" type="radio" name="data-topbar-color" id="topbar-color-dark" value="dark" />
+                  <label class="form-check-label p-0 avatar-md w-100" for="topbar-color-dark">
+                    <div id="sidebar-size">
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
+                            <span class="d-block p-1 bg-primary-lighten rounded mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-dark d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+
+                    <div id="topnav-color">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-dark d-flex p-1 align-items-center border-bottom border-secondary border-opacity-25">
+                          <span class="d-block p-1 bg-primary-lighten rounded me-1"></span>
+                          <span class="d-block border border-primary border-opacity-25 border-3 rounded ms-auto"></span>
+                          <span class="d-block border border-primary border-opacity-25 border-3 rounded ms-1"></span>
+                          <span class="d-block border border-primary border-opacity-25 border-3 rounded ms-1"></span>
+                          <span class="d-block border border-primary border-opacity-25 border-3 rounded ms-1"></span>
+                        </span>
+                        <span class="bg-light d-block p-1"></span>
+                      </span>
+                    </div>
+                  </label>
+                </div>
+                <h5 class="font-14 text-center text-muted mt-2">Dark</h5>
+              </div>
+
+              <div class="col-4">
+                <div class="form-check card-radio">
+                  <input class="form-check-input" type="radio" name="data-topbar-color" id="topbar-color-brand" value="brand" />
+                  <label class="form-check-label p-0 avatar-md w-100" for="topbar-color-brand">
+                    <div id="sidebar-size">
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
+                            <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-primary bg-gradient d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+
+                    <div id="topnav-color">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-primary bg-gradient d-flex p-1 align-items-center border-bottom border-secondary border-opacity-25">
+                          <span class="d-block p-1 bg-light opacity-25 rounded me-1"></span>
+                          <span class="d-block border border-3 border opacity-25 rounded ms-auto"></span>
+                          <span class="d-block border border-3 border opacity-25 rounded ms-1"></span>
+                          <span class="d-block border border-3 border opacity-25 rounded ms-1"></span>
+                          <span class="d-block border border-3 border opacity-25 rounded ms-1"></span>
+                        </span>
+                        <span class="bg-light d-block p-1"></span>
+                      </span>
+                    </div>
+                  </label>
+                </div>
+                <h5 class="font-14 text-center text-muted mt-2">Brand</h5>
+              </div>
+            </div>
+
+            <div>
+              <h5 class="my-3 font-16 fw-bold">Menu Color</h5>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input class="form-check-input" type="radio" name="data-menu-color" id="leftbar-color-light" value="light" />
+                    <label class="form-check-label p-0 avatar-md w-100" for="leftbar-color-light">
+                      <div id="sidebar-size">
+                        <span class="d-flex h-100">
+                          <span class="flex-shrink-0">
+                            <span class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
+                              <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                              <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            </span>
+                          </span>
+                          <span class="flex-grow-1">
+                            <span class="d-flex h-100 flex-column">
+                              <span class="bg-light d-block p-1"></span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div id="topnav-color">
+                        <span class="d-flex h-100 flex-column">
+                          <span class="bg-light d-flex p-1 align-items-center border-bottom border-secondary border-opacity-25">
+                            <span class="d-block p-1 bg-dark-lighten rounded me-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-auto"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                          </span>
+                          <span class="bg-light d-block p-1"></span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Light</h5>
+                </div>
+
+                <div class="col-4" style="--ct-dark-rgb: 64, 73, 84;">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input class="form-check-input" type="radio" name="data-menu-color" id="leftbar-color-dark" value="dark" />
+                    <label class="form-check-label p-0 avatar-md w-100" for="leftbar-color-dark">
+                      <div id="sidebar-size">
+                        <span class="d-flex h-100">
+                          <span class="flex-shrink-0">
+                            <span class="bg-dark d-flex h-100 flex-column p-1 px-2">
+                              <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
+                              <span class="d-block border border-secondary rounded border-opacity-25 border-3 w-100 mb-1"></span>
+                              <span class="d-block border border-secondary rounded border-opacity-25 border-3 w-100 mb-1"></span>
+                              <span class="d-block border border-secondary rounded border-opacity-25 border-3 w-100 mb-1"></span>
+                              <span class="d-block border border-secondary rounded border-opacity-25 border-3 w-100 mb-1"></span>
+                            </span>
+                          </span>
+                          <span class="flex-grow-1">
+                            <span class="d-flex h-100 flex-column">
+                              <span class="bg-light d-block p-1"></span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div id="topnav-color">
+                        <span class="d-flex h-100 flex-column">
+                          <span class="bg-light d-flex p-1 align-items-center border-bottom border-secondary border-primary border-opacity-25">
+                            <span class="d-block p-1 bg-primary-lighten rounded me-1"></span>
+                            <span class="d-block border border-secondary rounded border-opacity-25 border-3 ms-auto"></span>
+                            <span class="d-block border border-secondary rounded border-opacity-25 border-3 ms-1"></span>
+                            <span class="d-block border border-secondary rounded border-opacity-25 border-3 ms-1"></span>
+                            <span class="d-block border border-secondary rounded border-opacity-25 border-3 ms-1"></span>
+                          </span>
+                          <span class="bg-dark d-block p-1"></span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Dark</h5>
+                </div>
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input class="form-check-input" type="radio" name="data-menu-color" id="leftbar-color-brand" value="brand" />
+                    <label class="form-check-label p-0 avatar-md w-100" for="leftbar-color-brand">
+                      <div id="sidebar-size">
+                        <span class="d-flex h-100">
+                          <span class="flex-shrink-0">
+                            <span class="bg-primary bg-gradient d-flex h-100 flex-column p-1 px-2">
+                              <span class="d-block p-1 bg-light-lighten rounded mb-1"></span>
+                              <span class="d-block border opacity-25 rounded border-3 w-100 mb-1"></span>
+                              <span class="d-block border opacity-25 rounded border-3 w-100 mb-1"></span>
+                              <span class="d-block border opacity-25 rounded border-3 w-100 mb-1"></span>
+                              <span class="d-block border opacity-25 rounded border-3 w-100 mb-1"></span>
+                            </span>
+                          </span>
+                          <span class="flex-grow-1">
+                            <span class="d-flex h-100 flex-column">
+                              <span class="bg-light d-block p-1"></span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div id="topnav-color">
+                        <span class="d-flex h-100 flex-column">
+                          <span class="bg-light d-flex p-1 align-items-center border-bottom border-secondary">
+                            <span class="d-block p-1 bg-dark-lighten rounded me-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-auto"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"></span>
+                          </span>
+                          <span class="bg-primary bg-gradient d-block p-1"></span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Brand</h5>
+                </div>
+              </div>
+            </div>
+
+            <div id="sidebar-size">
+              <h5 class="my-3 font-16 fw-bold">Sidebar Size</h5>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input class="form-check-input" type="radio" name="data-sidenav-size" id="leftbar-size-default" value="default" />
+                    <label class="form-check-label p-0 avatar-md w-100" for="leftbar-size-default">
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span class="bg-light d-flex h-100 border-end flex-column p-1 px-2">
+                            <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Default</h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input class="form-check-input" type="radio" name="data-sidenav-size" id="leftbar-size-compact" value="compact" />
+                    <label class="form-check-label p-0 avatar-md w-100" for="leftbar-size-compact">
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span class="bg-light d-flex h-100 border-end flex-column p-1">
+                            <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Compact</h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input class="form-check-input" type="radio" name="data-sidenav-size" id="leftbar-size-small" value="condensed" />
+                    <label class="form-check-label p-0 avatar-md w-100" for="leftbar-size-small">
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span class="bg-light d-flex h-100 border-end flex-column" style="padding: 2px;">
+                            <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Condensed</h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input class="form-check-input" type="radio" name="data-sidenav-size" id="leftbar-size-small-hover" value="sm-hover" />
+                    <label class="form-check-label p-0 avatar-md w-100" for="leftbar-size-small-hover">
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span class="bg-light d-flex h-100 border-end flex-column" style="padding: 2px;">
+                            <span class="d-block p-1 bg-dark-lighten rounded mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                            <span class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">
+                    Hover View
+                  </h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input class="form-check-input" type="radio" name="data-sidenav-size" id="leftbar-size-full" value="full" />
+                    <label class="form-check-label p-0 avatar-md w-100" for="leftbar-size-full">
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="d-block p-1 bg-dark-lighten mb-1"></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">
+                    Full Layout
+                  </h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input class="form-check-input" type="radio" name="data-sidenav-size" id="leftbar-size-fullscreen" value="fullscreen" />
+                    <label class="form-check-label p-0 avatar-md w-100" for="leftbar-size-fullscreen">
+                      <span class="d-flex h-100">
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">
+                    Fullscreen Layout
+                  </h5>
+                </div>
+              </div>
+            </div>
+
+            <div id="layout-position">
+              <h5 class="my-3 font-16 fw-bold">Layout Position</h5>
+
+              <div class="btn-group radio" role="group">
+                <input type="radio" class="btn-check" name="data-layout-position" id="layout-position-fixed" value="fixed" />
+                <label class="btn btn-soft-primary w-sm" for="layout-position-fixed">Fixed</label>
+
+                <input type="radio" class="btn-check" name="data-layout-position" id="layout-position-scrollable" value="scrollable" />
+                <label class="btn btn-soft-primary w-sm ms-0" for="layout-position-scrollable">Scrollable</label>
+              </div>
+            </div>
+
+            <div id="sidebar-user">
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <label class="font-16 fw-bold m-0" for="sidebaruser-check">Sidebar User Info</label>
+                <div class="form-check form-switch">
+                  <input type="checkbox" class="form-check-input" name="sidebar-user" id="sidebaruser-check" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="offcanvas-footer border-top p-3 text-center">
+        <div class="row">
+          <div class="col-6">
+            <button type="button" class="btn btn-light w-100" id="reset-layout">
+              Reset
+            </button>
+          </div>
+          <div class="col-6">
+            <a href="#" target="_blank" role="button" class="btn btn-primary w-100">Done</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="notify-me">
+      <div class="d-flex align-items-center p-3 offcanvas-header" style="border-bottom: 1px solid grey;">
+        <h5 class="m-0">Signals</h5>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+
+      <div class="offcanvas-body notify p-0">
+        <div class="p30 aligncenter fontsmooth">
+          <img class="signal-on-board-image mB20 mT60" src="../assets/images/notification.gif" />
+          <h5 class="crm-font-bold f22 m0 mB18 signalTextClr aligncenter" style="font-size: 1.5rem;">Manage Signals</h5>
+          <p class="w90per aligncenter m0Auto signal-on-board-text">Receive real-time notifications across applications</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="info-alert" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body p-4">
+            <div class="text-center">
+              <p class="mt-2"><i class="ri-check-line text-info h1"></i></p>
+              <img src="../assets/images/admin.png" style="width: 150px;" />
+
+              <p class="mt-3"></p>
+              <button type="button" class="btn btn-info my-2" data-bs-dismiss="modal">Okay</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vendor js -->
+    <script src="../assets/js/vendor.min.js"></script>
+
+    <!-- Daterangepicker js -->
+    <script src="../assets/vendor/daterangepicker/moment.min.js"></script>
+    <script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+
+    <!-- Apex Charts js -->
+    <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <!-- Apex Chart Pie Demo js -->
+    <script src="../assets/js/pages/demo.apex-pie.js"></script>
+
+    <!-- Vector Map js -->
+    <script src="../assets/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="../assets/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- Dashboard App js -->
+    <script src="../assets/js/pages/demo.dashboard.js"></script>
+
+    <!-- App js -->
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/js/custom.js"></script>
+
+    <script>
+      function myFunction() {
+        alert("Logout Successfully!");
+      }
+    </script>
+
+    <script>
+      function validateForm(action) {
+        if (action === "cancel") {
+          // Call the cancelForm function directly
+          cancelForm();
+          // Prevent further execution
+          return false;
+        }
+
+        // Company validation
+        var company = document.getElementById("CCP_CN").value;
+        if (!company || company === "") {
+          showAlertModal("Please enter a Company.");
+          return false;
+        }
+        // Company validation
+        var companyOwner = document.getElementById("CCP_CO").value;
+        if (!companyOwner || companyOwner === "") {
+          showAlertModal("Please enter a Company Owner.");
+          return false;
+        }
+
+        // Phone validation
+        var phone = document.getElementById("CCPPHN").value;
+        if (!phone || phone === "") {
+          showAlertModal("Please enter a Phone number.");
+          return false;
+        } else if (!isValidPhone(phone)) {
+          showAlertModal("Please enter a valid Phone number.");
+          return false;
+        }
+
+        // Email validation
+        var email = document.getElementById("CCP_EMAIL").value;
+        if (!email || email === "") {
+          showAlertModal("Please enter an Email.");
+          return false;
+        } else if (!isValidEmail(email)) {
+          showAlertModal("Please enter a valid Email.");
+          return false;
+        }
+
+        // Website validation
+        var website = document.getElementById("CCP_WEB").value;
+        if (!website || website === "") {
+          showAlertModal("Please enter a Website.");
+          return false;
+        }
+        // Website validation
+        var fax = document.getElementById("CCP_FAX").value;
+        if (!fax || fax === "") {
+          showAlertModal("Please enter a Fax.");
+          return false;
+        }
+
+        // Lead Source validation
+        var source = document.getElementById("CCP_DD_SOU").value;
+        if (!source || source === "<-Select->") {
+          showAlertModal("Please select a Source.");
+          return false;
+        }
+
+        // Industry validation
+        var industry = document.getElementById("CCP_DD_IND").value;
+        if (!industry || industry === "<-Select->") {
+          showAlertModal("Please select an Industry.");
+          return false;
+        }
+
+        // No of Employees validation
+        var noOfEmployees = document.getElementById("CCP_NOE").value;
+        if (!noOfEmployees || noOfEmployees === "") {
+          showAlertModal("Please enter the No of Employees.");
+          return false;
+        }
+
+        // Annual Revenue validation
+
+        var annualRevenueCurrency = document.getElementById("CCP_DD_AMO").value;
+        if (!annualRevenueCurrency || annualRevenueCurrency === "<-Select->") {
+          showAlertModal("Please select Currency Value.");
+          return false;
+        }
+
+        var annualRevenue = document.getElementById("CCP_AR").value;
+        if (!annualRevenue || annualRevenue === "") {
+          showAlertModal("Please enter the Annual Revenue.");
+          return false;
+        }
+
+        var DocuMents = document.getElementById("CCP_DOC").value;
+        if (!DocuMents ||  DocuMents=== "") {
+          showAlertModal("Please attach the Documents.");
+          return false;
+        }
+
+        // Skype validation
+        var skype = document.getElementById("CCP_SKY").value;
+        if (!skype || skype === "") {
+          showAlertModal("Please enter Skype ID.");
+          return false;
+        }
+
+        // Twitter validation
+        var twitter = document.getElementById("CCP_TWI").value;
+        if (!twitter || twitter === "") {
+          showAlertModal("Please enter Twitter ID.");
+          return false;
+        }
+
+        // Street validation
+        var street = document.getElementById("CCP_STR").value;
+        if (!street || street === "") {
+          showAlertModal("Please enter a Street.");
+          return false;
+        }
+
+        // City validation
+        var city = document.getElementById("CCP_CIT").value;
+        if (!city || city === "") {
+          showAlertModal("Please enter a City.");
+          return false;
+        }
+
+        // State validation
+        var state = document.getElementById("CCP_STA").value;
+        if (!state || state === "") {
+          showAlertModal("Please enter a State.");
+          return false;
+        }
+
+        // Zipcode validation
+        var zipcode = document.getElementById("CCP_ZIP").value;
+        if (!zipcode || zipcode === "") {
+          showAlertModal("Please enter a Zipcode.");
+          return false;
+        }
+
+        // Country validation
+        var country = document.getElementById("CCP_COU").value;
+        if (!country || country === "") {
+          showAlertModal("Please enter a Country.");
+          return false;
+        }
+
+        // Description validation
+        var description = document.getElementById("CCP_DES").value;
+        if (!description || description === "") {
+          showAlertModal("Please enter a Description.");
+          return false;
+        }
+
+        // Display modal if validation is successful
+        $("#info-alert-modal2").modal("show");
+
+        // Redirect page based on the action
+        if (action === "save") {
+          setTimeout(function () {
+            window.location.href = "company.html";
+          }, 1000);
+        } else if (action === "save-new") {
+          setTimeout(function () {
+            window.location.href = "company.html";
+          }, 1000);
+        }
+
+        // Prevent form submission
+        return false;
+      }
+
+      function isValidEmail(email) {
+        // Regular expression for email validation
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      function isValidPhone(phone) {
+        // Regular expression for phone number validation
+        var phoneRegex = /^\d{10}$/;
+        return phoneRegex.test(phone);
+      }
+
+      function showAlertModal(message) {
+        var modalBody = document.querySelector("#info-alert .modal-body");
+        modalBody.innerHTML =
+          '<div class="text-center">' +
+          '<p class="mt-2"><i class="ri-alert-line text-info h1"></i></p>' +
+          '<img src="../assets/images/admin.png" style="width: 150px;">' +
+          '<p style="padding-top: 15px;">' +
+          message +
+          "</p>" +
+          '<button type="button" class="btn btn-info my-2" data-bs-dismiss="modal">Okay</button>' +
+          "</div>";
+        $("#info-alert").modal("show");
+      }
+
+      function cancelForm() {
+        $("#info-alert-modal1").modal("show");
+        setTimeout(function () {
+          window.location.href = "company.html";
+        }, 1000);
+      }
+    </script>
+
+<script>
+function validateForm(action) {
+    let isValid = true;
+
+    // Clear previous errors
+    document.querySelectorAll('.form-control').forEach(field => {
+        field.classList.remove('border-danger');
+        const errorMessage = field.nextElementSibling;
+        if (errorMessage) {
+            errorMessage.remove();
+        }
+    });
+
+    // Check for empty fields
+    document.querySelectorAll('.form-control[required]').forEach(field => {
+        if (field.value.trim() === '') {
+            field.classList.add('border-danger');
+            displayError(field, 'This field is required');
+            isValid = false;
+        }
+    });
+
+   // Validate Phone Number
+   const phoneField = document.querySelector('input[name="CCP_PHN"]');
+      if (phoneField.value === '' || !/^\d{10}$/.test(phoneField.value)) {
+          phoneField.classList.add('border-danger');
+          displayError(phoneField, 'Please enter a valid 10-digit phone number');
+          isValid = false;
+      }
+  
+      // Validate Email
+      const emailField = document.querySelector('input[name="CCP_EMAIL"]');
+      if (emailField.value === '' || !/\S+@\S+\.\S+/.test(emailField.value)) {
+          emailField.classList.add('border-danger');
+          displayError(emailField, 'Please enter a valid email address');
+          isValid = false;
+      }
+
+    return isValid;
+}
+
+function displayError(field, message) {
+    const error = document.createElement('div');
+    error.classList.add('text-danger');
+    error.style.fontSize = 'small';
+    error.textContent = message;
+    field.parentElement.appendChild(error);
+}
+</script>
+
+<script>
+     fetch('/company/getAulRev')
+      .then(response => response.json())
+      .then(data => {
+          const documentTypeSelect = document.getElementById('CCP_DD_AMO');
+          data.forEach(type => {
+              const option = document.createElement('option');
+              option.value = type.Column_Description;
+              option.textContent = type.Column_Description;
+              documentTypeSelect.appendChild(option);
+          });
+      });
+     fetch('/company/getEtax')
+      .then(response => response.json())
+      .then(data => {
+          const documentTypeSelect = document.getElementById('CCP_DD_ETAX');
+          data.forEach(type => {
+              const option = document.createElement('option');
+              option.value = type.Column_Description;
+              option.textContent = type.Column_Description;
+              documentTypeSelect.appendChild(option);
+          });
+      });
+     fetch('/company/getEtds')
+      .then(response => response.json())
+      .then(data => {
+          const documentTypeSelect = document.getElementById('CCP_DD_ETDS');
+          data.forEach(type => {
+              const option = document.createElement('option');
+              option.value = type.Column_Description;
+              option.textContent = type.Column_Description;
+              documentTypeSelect.appendChild(option);
+          });
+      });
+</script>
+  </body>
+</html>

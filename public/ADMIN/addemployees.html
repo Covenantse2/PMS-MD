@@ -1,0 +1,3080 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Employees</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      content="A fully featured admin theme which can be used to build CRM, CMS, etc."
+      name="description"
+    />
+    <meta content="Coderthemes" name="author" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" />
+
+    <!-- Daterangepicker css -->
+    <link
+      rel="stylesheet"
+      href="../assets/vendor/daterangepicker/daterangepicker.css"
+    />
+
+    <!-- Vector Map css -->
+    <link
+      rel="stylesheet"
+      href="../assets/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css"
+    />
+
+    <!-- Theme Config Js -->
+    <script src="../assets/js/hyper-config.js"></script>
+
+    <!-- App css -->
+    <link
+      href="../assets/css/app-saas.min.css"
+      rel="stylesheet"
+      type="text/css"
+      id="app-style"
+    />
+
+    <!-- Icons css -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+
+  <body>
+    <!-- Begin page -->
+    <div class="wrapper">
+      <!-- ========== Topbar Start ========== -->
+      <div class="navbar-custom">
+        <div class="topbar container-fluid">
+          <div class="d-flex align-items-center gap-lg-2 gap-1">
+            <!-- Topbar Brand Logo -->
+            <div class="logo-topbar">
+              <!-- Logo light -->
+              <a href="home.html" class="logo-light">
+                <span class="logo-lg">
+                  <img src="../assets/images/pm.png" alt="logo" />
+                </span>
+                <span class="logo-sm">
+                  <img src="../assets/images/logo-sm.png" alt="small logo" />
+                </span>
+              </a>
+
+              <!-- Logo Dark -->
+              <!--<a href="home.html" class="logo-dark">
+                <span class="logo-lg">
+                  <img src="../assets/images/logo-dark.png" alt="dark logo" />
+                </span>
+                <span class="logo-sm">
+                  <img src="../assets/images/logo-dark-sm.png" alt="small logo" />
+                </span>
+              </a>-->
+            </div>
+
+            <!-- Sidebar Menu Toggle Button -->
+            <button class="button-toggle-menu">
+              <i class="mdi mdi-menu"></i>
+            </button>
+
+            <!-- Horizontal Menu Toggle Button -->
+            <button
+              class="navbar-toggle"
+              data-bs-toggle="collapse"
+              data-bs-target="#topnav-menu-content"
+            >
+              <div class="lines">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </button>
+          </div>
+
+          <ul class="topbar-menu d-flex align-items-center gap-3">
+            <li class="dropdown">
+              <a
+                class="nav-link dropdown-toggle arrow-none plus"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="false"
+                aria-expanded="false"
+              >
+                <span class="align-middle d-lg-inline-block span title">
+                  +
+                </span>
+                <span class="title">Create menu</span>
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-end dropdown-menu-animated"
+              >
+                <!-- item-->
+                <a href="addcompany.html" class="dropdown-item">
+                  <span class="align-middle">+ Company</span>
+                </a>
+
+                <!-- item-->
+                <a href="addemployees.html" class="dropdown-item">
+                  <span class="align-middle">+ Employee</span>
+                </a>
+                <!-- item-->
+                <a href="addtask.html" class="dropdown-item">
+                  <span class="align-middle">+ Task</span>
+                </a>
+              </div>
+            </li>
+
+            <li class="dropdown notification-list">
+              <a
+                class="nav-link dropdown-toggle arrow-none"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="false"
+                aria-expanded="false"
+              >
+                <span
+                  class="mdi mdi-magnify search-icon span"
+                  style="font-size: 23px;"
+                ></span>
+                <span class="title">Search</span>
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg py-0"
+              >
+                <div
+                  class="p-2 border-top-0 border-start-0 border-end-0 border-dashed border"
+                >
+                  <form class="search-form">
+                    <div class="search-form-div">
+                      <span
+                        class="mdi mdi-magnify search-icon"
+                        style="font-size: 23px;"
+                      ></span>
+                      <input type="text" />
+                      <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <div class="search-form-span">
+                      <p>Search <i class="fa-regular fa-folder-open"></i></p>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </li>
+
+            <li class="d-none d-sm-inline-block">
+              <a class="nav-link" data-bs-toggle="offcanvas" href="#notify-me">
+                <i class="ri-notification-3-line font-22"></i>
+              </a>
+            </li>
+
+            <li class="d-none d-sm-inline-block">
+              <a
+                class="nav-link"
+                data-bs-toggle="offcanvas"
+                href="#theme-settings-offcanvas"
+              >
+                <i class="ri-settings-3-line font-22"></i>
+              </a>
+            </li>
+
+            <li class="d-none d-sm-inline-block">
+              <div
+                class="nav-link"
+                id="light-dark-mode"
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
+                title="Theme Mode"
+              >
+                <i class="ri-moon-line font-22"></i>
+              </div>
+            </li>
+
+            <li class="d-none d-md-inline-block">
+              <a class="nav-link" href="#" data-toggle="fullscreen">
+                <i class="ri-fullscreen-line font-22"></i>
+              </a>
+            </li>
+
+            <li class="dropdown">
+              <a
+                class="nav-link dropdown-toggle arrow-none nav-user px-2"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="false"
+                aria-expanded="false"
+              >
+                <span class="account-user-avatar">
+                  <img
+                    src="../assets/images/users/avatar-1.jpg"
+                    alt="user-image"
+                    width="32"
+                    class="rounded-circle"
+                  />
+                </span>
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown"
+              >
+                <!-- item-->
+                <!-- item-->
+                <div class="dropdown-header noti-title">
+                  <h6 class="text-overflow m-0">Welcome !</h6>
+                </div>
+
+                <!-- item-->
+                <a
+                  href="../index.html"
+                  class="dropdown-item"
+                  onclick="myFunction()"
+                >
+                  <i class="mdi mdi-logout me-1"></i>
+                  <span>Logout</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- ========== Topbar End ========== -->
+
+      <!-- ========== Left Sidebar Start ========== -->
+      <div class="leftside-menu">
+        <!-- Brand Logo Light -->
+        <a href="index.html" class="logo logo-light">
+          <span class="logo-lg">
+            <img src="../assets/images/pm.png" style="width: 180px;height: 30px;" alt="logo" />
+          </span>
+          <span class="logo-sm">
+            <img src="../assets/images/logo-sm.png" alt="small logo" />
+          </span>
+        </a>
+
+        <!-- Sidebar Hover Menu Toggle Button -->
+        <div class="button-sm-hover" data-bs-toggle="tooltip" data-bs-placement="right" title="Show Full Sidebar">
+          <i class="ri-checkbox-blank-circle-line align-middle"></i>
+        </div>
+
+        <!-- Full Sidebar Menu Close Button -->
+        <div class="button-close-fullsidebar">
+          <i class="ri-close-fill align-middle"></i>
+        </div>
+
+        <!-- Sidebar -left -->
+        <div class="h-100" id="leftside-menu-container" data-simplebar>
+          <!-- Leftbar User -->
+          <div class="leftbar-user">
+            <a href="#">
+              <img src="../assets/images/users/avatar-1.jpg" alt="user-image" height="42" class="rounded-circle shadow-sm" />
+            </a>
+          </div>
+
+          <!--- Sidemenu -->
+          <ul class="side-nav">
+            <li class="side-nav-title">My Work</li>
+
+          <li class="side-nav-item">
+              <a href="../ADMIN/home.html" class="side-nav-link">
+                <i class="ri-bar-chart-box-fill"></i>
+
+                <span> Dashboard </span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="../ADMIN/MasterData.html" class="side-nav-link">
+                <i class=" ri-funds-box-fill  "></i>
+                <span>Master Data</span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="../ADMIN/products.html" class="side-nav-link">
+                <i class=" ri-funds-box-fill  "></i>
+                <span>Products</span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="../ADMIN/company.html" class="side-nav-link">
+                <i class="ri-send-plane-fill"></i>
+                <span> Company</span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="../ADMIN/employees.html" class="side-nav-link">
+                <i class="ri-group-fill"></i>
+                <span>Employee</span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="../ADMIN/groups.html" class="side-nav-link">
+                <i class="ri-team-fill"></i>
+                <span>Groups</span>
+              </a>
+            </li>
+         
+           
+            <li class="side-nav-item">
+              <a href="../ADMIN/customers.html" class="side-nav-link">
+                <i class="ri-account-box-fill"></i>
+                <span>Customer</span>
+              </a>
+            </li>
+
+            <li class="side-nav-item">
+              <a href="../ADMIN/cutomerdocuments.html" class="side-nav-link">
+                <i class="ri-contacts-book-fill"></i>
+                <span>Customer Documents </span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="../ADMIN/filesize.html" class="side-nav-link">
+                <i class="ri-contacts-book-fill"></i>
+                <span>File Size</span>
+              </a>
+            </li>
+            
+            
+            
+       
+            
+          </ul>
+          <!--- End Sidemenu -->
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <!-- ========== Left Sidebar End ========== -->
+
+      <!-- ============================================================== -->
+      <!-- Start Page Content here -->
+      <!-- ============================================================== -->
+
+      <div class="content-page">
+        <div class="content">
+          <!-- Start Content-->
+          <div class="container-fluid">
+            <!-- start page title -->
+            <div class="row">
+              <div class="col-12">
+                <div class="page-title-box">
+                  <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                      <li class="breadcrumb-item">
+                        <a href="javascript: void(0);">Home</a>
+                      </li>
+                      <li class="breadcrumb-item active">
+                        <a href="javascript: void(0);">Add Employee</a>
+                      </li>
+                    </ol>
+                  </div>
+                  <h4 class="page-title">Add Employee</h4>
+                </div>
+              </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <form
+                      action="/employee/add"
+                      method="POST"
+                      enctype="multipart/form-data"
+                    >
+                      <div id="progressbarwizard">
+                        <ul
+                          class="nav nav-pills nav-justified form-wizard-header mb-3"
+                        >
+                          <li class="nav-item">
+                            <a
+                              href="#account-2"
+                              data-bs-toggle="tab"
+                              data-toggle="tab"
+                              class="nav-link rounded-0 py-2"
+                            >
+                              <!--<i class="mdi mdi-account-circle font-18 align-middle me-1"></i>-->
+                              <span class="d-sm-inline">Primary Details</span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a
+                              href="#profile-tab-2"
+                              data-bs-toggle="tab"
+                              data-toggle="tab"
+                              class="nav-link rounded-0 py-2"
+                            >
+                              <span class="d-sm-inline">Personal Details</span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a
+                              href="#profile-tab-3"
+                              data-bs-toggle="tab"
+                              data-toggle="tab"
+                              class="nav-link rounded-0 py-2"
+                            >
+                              <span class="d-sm-inline">Official Details</span>
+                            </a>
+                          </li>
+                        </ul>
+
+                        <div class="tab-content b-0 mb-0">
+                          <div
+                            id="bar"
+                            class="progress mb-3"
+                            style="height: 7px;"
+                          >
+                            <div
+                              class="bar progress-bar progress-bar-striped progress-bar-animated bg-success"
+                            ></div>
+                          </div>
+
+                          <div class="tab-pane" id="account-2">
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Employee Name</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Employee name"
+                                  name="AEM_EN"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Employee Code</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Employee code"
+                                  name="AEM_EC"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Gender</label>
+                                <select
+                                  class="form-select"
+                                  name="AEM_DD_GN"
+                                  id="AEM_DD_GN"
+                                  runat="server"
+                                  required
+                                >
+                                  <option selected value="GEN"
+                                    ><-Select-></option
+                                  >
+                                 
+                                </select>
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label" for="company">Company:</label>
+                                <select class="form-select" id="company" name="company">
+                                  <option selected value="CMP">Select a company</option>
+                                </select>
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Department Category</label
+                                >
+                                <select
+                                  class="form-select"
+                                  name="AEM_DD_DC"
+                                  id="AEM_DD_DC"
+                                  runat="server"
+                                  required
+                                >
+                                  <option selected value="DPC"
+                                    ><-Select-></option
+                                  >
+                                
+                                </select>
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Department Name</label
+                                >
+                                <select
+                                  class="form-select"
+                                  name="AEM_DD_DN"
+                                  id="AEM_DD_DN"
+                                  runat="server"
+                                  required
+                                >
+                                  <option selected value="DPN"
+                                    ><-Select-></option
+                                  >
+                                </select>
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Department Designation</label
+                                >
+                                <select
+                                  class="form-select"
+                                  name="AEM_DD_DD"
+                                  id="AEM_DD_DD"
+                                  runat="server"
+                                  required
+                                >
+                                  <option selected value="DPD"
+                                    ><-Select-></option
+                                  >
+                              
+                                </select>
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Shift</label>
+                                <select
+                                  class="form-select"
+                                  name="AEM_DD_SF"
+                                  id="AEM_DD_SF"
+                                  runat="server"
+                                  required
+                                >
+                                  <option selected value="DPS"
+                                    ><-Select-></option
+                                  >
+                               
+                                </select>
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Shift Start Time</label
+                                >
+                                <input
+                                  type="time"
+                                  class="form-control"
+                                  name="AEM_ST"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Shift End Time</label>
+                                <input
+                                  type="time"
+                                  class="form-control"
+                                  name="AEM_ET"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Educational Qualification</label
+                                >
+                                <select
+                                  class="form-select"
+                                  name="AEM_DD_EQ"
+                                  id="AEM_DD_EQ"
+                                  runat="server"
+                                  required
+                                >
+                                  <option selected value="EDQ"
+                                    ><-Select-></option
+                                  >
+                          
+                                </select>
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label"> Department</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Department"
+                                  name="AEM_DP"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label"> Experience</label>
+                                <select
+                                  class="form-select"
+                                  name="AEM_DD_EX"
+                                  id="AEM_DD_EX"
+                                  runat="server"
+                                  required
+                                >
+                                  <option selected value="EXP"
+                                    ><-Select-></option
+                                  >
+                                 
+                                </select>
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Previous Company</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Previous company"
+                                  name="AEM_PC"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Relevant Experience in Years</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Experience in years"
+                                  name="AEM_EY"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Relevant Experience in Months</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Experience in months"
+                                  name="AEM_EM"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Date of Birth</label>
+                                <input
+                                  type="date"
+                                  class="form-control"
+                                  name="AEM_DB"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Place of Birth</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Place of birth"
+                                  name="AEM_PB"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Blood Group</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Blood group"
+                                  name="AEM_BG"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Date of Joining</label
+                                >
+                                <input
+                                  type="date"
+                                  class="form-control"
+                                  name="AEM_DJ"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">
+                                  Employment Type</label
+                                >
+                                <select
+                                  class="form-select"
+                                  name="AEM_DD_ET"
+                                  id="AEM_DD_ET"
+                                  runat="server"
+                                  required
+                                >
+                                  <option selected value="EPT"
+                                    ><-Select-></option
+                                  >
+                           
+                                </select>
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Employment Status</label
+                                >
+                                <select
+                                  class="form-select"
+                                  name="AEM_DD_ES"
+                                  id="AEM_DD_ES"
+                                  runat="server"
+                                  required
+                                >
+                                  <option selected value="EPS"
+                                    ><-Select-></option
+                                  >
+                                
+                                </select>
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Personal Mobile</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Personal mobile"
+                                  name="AEM_PM"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Work mobile</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Work mobile"
+                                  name="AEM_WM"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Extension</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Extension"
+                                  name="AEM_ES"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Bio Metric ID</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Bio Metric ID"
+                                  name="AEM_ID"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+
+                            <ul class="list-inline wizard mb-0 mt-3">
+                              <li class="next list-inline-item float-end">
+                                <a
+                                  href="javascript:void(0);"
+                                  class="btn btn-info"
+                                  >Add More Info
+                                  <i class="mdi mdi-arrow-right ms-1"></i
+                                ></a>
+                              </li>
+                            </ul>
+                          </div>
+
+                          <div class="tab-pane" id="profile-tab-2">
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Father name</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Father name"
+                                  name="AEM_FN"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Mother name</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Mother name"
+                                  name="AEM_MN"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Residental Address</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Residental address"
+                                  name="AEM_RA"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Address Line 1</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Address line 1"
+                                  name="AEM_AD"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Address Line 2</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Address line 2"
+                                  name="AEM_ADD"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">City</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="City"
+                                  name="AEM_CIT"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">District</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="District"
+                                  name="AEM_DIS"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">State</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="State"
+                                  name="AEM_STA"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Pincode</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Pincode"
+                                  name="AEM_PIN"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Country</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Country"
+                                  name="AEM_COU"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Permanent Address</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Permanent address"
+                                  name="AEM_PA"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Address Line 1</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Address line 1"
+                                  name="AEM_PAL"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Address Line 2</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Address line 2"
+                                  name="AEM_PALL"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">City</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="City"
+                                  name="AEM_PCIT"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">District</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="District"
+                                  name="AEM_PDIS"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">State</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="State"
+                                  name="AEM_PSTA"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Pincode</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Pincode"
+                                  name="AEM_PPIN"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Country</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Country"
+                                  name="AEM_PCOU"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Contact Number</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Contact number"
+                                  name="AEM_CTN"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  placeholder="Email"
+                                  name="AEM_EMAIL"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <ul class="pager wizard mb-0 list-inline mt-3">
+                              <li class="previous list-inline-item">
+                                <button type="button" class="btn btn-light">
+                                  <i class="mdi mdi-arrow-left me-1"></i> Back
+                                </button>
+                              </li>
+                              <li class="next list-inline-item float-end">
+                                <button type="button" class="btn btn-info">
+                                  Add More Info
+                                  <i class="mdi mdi-arrow-right ms-1"></i>
+                                </button>
+                              </li>
+                            </ul>
+                          </div>
+
+                          <div class="tab-pane" id="profile-tab-3">
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Aadhar Card</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Aadhar card"
+                                  name="AEM_AC"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Voter ID</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Voter ID"
+                                  name="AEM_VID"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Record Status</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Record status"
+                                  name="AEM_RS"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Record Location</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Record location"
+                                  name="AEM_RL"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Remarks</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Remarks"
+                                  name="AEM_RK"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">UAN Number</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="UAN number"
+                                  name="AEM_UAN"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Login ID</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Login ID"
+                                  name="AEM_LID"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Password</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Password"
+                                  name="AEM_PAS"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >UAN Login Phone</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="UAN link phone"
+                                  name="AEM_ULP"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label"
+                                  >Aadhar Link Phone</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Aadhar link phone"
+                                  name="AEM_ALP"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Bank Name</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Bank name"
+                                  name="AEM_BN"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Branch</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Branch"
+                                  name="AEM_BR"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">IFSC Code</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="IFSC code"
+                                  name="AEM_IFS"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Account No</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Account no"
+                                  name="AEM_ATN"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+                            <div class="row mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Password</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Password"
+                                  name="AEM_PASS"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+
+                              <div class="col-md-6">
+                                <label class="form-label">Employee Photo</label>
+                                <input
+                                  type="file"
+                                  class="form-control"
+                                  name="AEM_DOC"
+                                  runat="server"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <!-- end row -->
+
+                            <ul class="pager wizard mb-0 list-inline mt-3">
+                              <li class="previous list-inline-item">
+                                <button type="button" class="btn btn-light">
+                                  <i class="mdi mdi-arrow-left me-1"></i> Back
+                                </button>
+                              </li>
+                              <li class="next list-inline-item float-end">
+                                <button
+                                  type="submit"
+                                  onclick="return validateForm('save')"
+                                  class="btn btn-info"
+                                >
+                                  Save
+                                </button>
+                              </li>
+                              <div
+                                id="info-alert-modal2"
+                                class="modal fade"
+                                tabindex="-1"
+                                role="dialog"
+                                aria-hidden="true"
+                              >
+                                <div
+                                  class="modal-dialog modal-sm modal-dialog-centered"
+                                >
+                                  <div class="modal-content">
+                                    <div class="modal-body p-4">
+                                      <div class="text-center">
+                                        <p class="mt-2">
+                                          <i
+                                            class="ri-check-line text-info h1"
+                                          ></i>
+                                        </p>
+                                        <img
+                                          src="../assets/images/admin.png"
+                                          style="width: 150px;"
+                                        />
+
+                                        <p class="mt-3">
+                                          Employee Details Saved Successfully !
+                                        </p>
+                                        <button
+                                          type="button"
+                                          class="btn btn-info my-2"
+                                          data-bs-dismiss="modal"
+                                        >
+                                          Okay
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </ul>
+                          </div>
+                        </div>
+                        <!-- tab-content -->
+                      </div>
+                      <!-- end #progressbarwizard-->
+                    </form>
+                  </div>
+                  <!-- end card-body-->
+                </div>
+                <!-- end card-->
+              </div>
+              <!-- end col -->
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- container -->
+        </div>
+      </div>
+
+      <!-- Footer Start -->
+      <footer class="footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="text-md-end footer-links d-none d-md-block">
+                <p>
+                  Copyright © 2024 PM. All Rights Reserved. Designed by
+                  <a href="https://covenanttecs.com/" target="_blank"
+                    >Covenant Technologies</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- end Footer -->
+
+      <!-- ============================================================== -->
+      <!-- End Page content -->
+      <!-- ============================================================== -->
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Theme Settings -->
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="theme-settings-offcanvas"
+    >
+      <div class="d-flex align-items-center bg-primary p-3 offcanvas-header">
+        <h5 class="text-white m-0">Theme Settings</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white ms-auto"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="offcanvas-body p-0">
+        <div data-simplebar class="h-100">
+          <div class="card mb-0 p-3">
+            <h5 class="mt-0 font-16 fw-bold mb-3">Choose Layout</h5>
+            <div class="row">
+              <div class="col-4">
+                <div class="form-check card-radio">
+                  <input
+                    id="customizer-layout01"
+                    name="data-layout"
+                    type="radio"
+                    value="vertical"
+                    class="form-check-input"
+                  />
+                  <label
+                    class="form-check-label p-0 avatar-md w-100"
+                    for="customizer-layout01"
+                  >
+                    <span class="d-flex h-100">
+                      <span class="flex-shrink-0">
+                        <span
+                          class="bg-light d-flex h-100 border-end flex-column p-1 px-2"
+                        >
+                          <span
+                            class="d-block p-1 bg-dark-lighten rounded mb-1"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                          ></span>
+                        </span>
+                      </span>
+                      <span class="flex-grow-1">
+                        <span class="d-flex h-100 flex-column">
+                          <span class="bg-light d-block p-1"></span>
+                        </span>
+                      </span>
+                    </span>
+                  </label>
+                </div>
+                <h5 class="font-14 text-center text-muted mt-2">Vertical</h5>
+              </div>
+            </div>
+
+            <h5 class="my-3 font-16 fw-bold">Color Scheme</h5>
+
+            <div class="colorscheme-cardradio">
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-bs-theme"
+                      id="layout-color-light"
+                      value="light"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="layout-color-light"
+                    >
+                      <div id="sidebar-size">
+                        <span class="d-flex h-100">
+                          <span class="flex-shrink-0">
+                            <span
+                              class="bg-light d-flex h-100 border-end flex-column p-1 px-2"
+                            >
+                              <span
+                                class="d-block p-1 bg-dark-lighten rounded mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                            </span>
+                          </span>
+                          <span class="flex-grow-1">
+                            <span
+                              class="d-flex h-100 flex-column bg-white rounded-2"
+                            >
+                              <span class="bg-light d-block p-1"></span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div id="topnav-color" class="bg-white rounded-2 h-100">
+                        <span class="d-flex h-100 flex-column">
+                          <span
+                            class="bg-light d-flex p-1 align-items-center border-bottom border-secondary border-opacity-25"
+                          >
+                            <span
+                              class="d-block p-1 bg-dark-lighten rounded me-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-auto"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                          </span>
+                          <span
+                            class="d-flex h-100 flex-column bg-white rounded-2"
+                          >
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Light</h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-bs-theme"
+                      id="layout-color-dark"
+                      value="dark"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100 bg-black"
+                      for="layout-color-dark"
+                    >
+                      <div id="sidebar-size">
+                        <span class="d-flex h-100">
+                          <span class="flex-shrink-0">
+                            <span
+                              class="bg-light d-flex h-100 flex-column p-1 px-2"
+                            >
+                              <span
+                                class="d-block p-1 bg-dark-lighten rounded mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-secondary border-opacity-25 border-3 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-secondary border-opacity-25 border-3 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-secondary border-opacity-25 border-3 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-secondary border-opacity-25 border-3 rounded w-100 mb-1"
+                              ></span>
+                            </span>
+                          </span>
+                          <span class="flex-grow-1">
+                            <span class="d-flex h-100 flex-column">
+                              <span class="bg-light d-block p-1"></span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div id="topnav-color">
+                        <span class="d-flex h-100 flex-column">
+                          <span
+                            class="bg-light-lighten d-flex p-1 align-items-center border-bottom border-opacity-25 border-primary border-opacity-25"
+                          >
+                            <span
+                              class="d-block p-1 bg-dark-lighten rounded me-1"
+                            ></span>
+                            <span
+                              class="d-block border border-primary border-opacity-25 border-3 rounded ms-auto"
+                            ></span>
+                            <span
+                              class="d-block border border-primary border-opacity-25 border-3 rounded ms-1"
+                            ></span>
+                            <span
+                              class="d-block border border-primary border-opacity-25 border-3 rounded ms-1"
+                            ></span>
+                            <span
+                              class="d-block border border-primary border-opacity-25 border-3 rounded ms-1"
+                            ></span>
+                          </span>
+                          <span class="bg-light-lighten d-block p-1"></span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Dark</h5>
+                </div>
+              </div>
+            </div>
+
+            <div id="layout-width">
+              <h5 class="my-3 font-16 fw-bold">Layout Mode</h5>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-layout-mode"
+                      id="layout-mode-fluid"
+                      value="fluid"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="layout-mode-fluid"
+                    >
+                      <div id="sidebar-size">
+                        <span class="d-flex h-100">
+                          <span class="flex-shrink-0">
+                            <span
+                              class="bg-light d-flex h-100 border-end flex-column p-1 px-2"
+                            >
+                              <span
+                                class="d-block p-1 bg-dark-lighten rounded mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                            </span>
+                          </span>
+                          <span class="flex-grow-1">
+                            <span class="d-flex h-100 flex-column rounded-2">
+                              <span class="bg-light d-block p-1"></span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div id="topnav-color">
+                        <span class="d-flex h-100 flex-column">
+                          <span
+                            class="bg-light d-flex p-1 align-items-center border-bottom border-secondary border-opacity-25"
+                          >
+                            <span
+                              class="d-block p-1 bg-dark-lighten rounded me-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-auto"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                          </span>
+                          <span class="bg-light d-block p-1"></span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Fluid</h5>
+                </div>
+                <div class="col-4" id="layout-boxed">
+                  <div class="form-check card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-layout-mode"
+                      id="layout-mode-boxed"
+                      value="boxed"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100 px-2"
+                      for="layout-mode-boxed"
+                    >
+                      <div id="sidebar-size" class="border-start border-end">
+                        <span class="d-flex h-100">
+                          <span class="flex-shrink-0">
+                            <span
+                              class="bg-light d-flex h-100 border-end flex-column p-1 px-2"
+                            >
+                              <span
+                                class="d-block p-1 bg-dark-lighten rounded mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                            </span>
+                          </span>
+                          <span class="flex-grow-1">
+                            <span class="d-flex h-100 flex-column rounded-2">
+                              <span class="bg-light d-block p-1"></span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div
+                        id="topnav-color"
+                        class="border-start border-end h-100"
+                      >
+                        <span class="d-flex h-100 flex-column">
+                          <span
+                            class="bg-light d-flex p-1 align-items-center border-bottom border-secondary border-opacity-25"
+                          >
+                            <span
+                              class="d-block p-1 bg-dark-lighten rounded me-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-auto"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                          </span>
+                          <span class="bg-light d-block p-1"></span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Boxed</h5>
+                </div>
+
+                <div class="col-4" id="layout-detached">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-layout-mode"
+                      id="data-layout-detached"
+                      value="detached"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="data-layout-detached"
+                    >
+                      <span class="d-flex h-100 flex-column">
+                        <span
+                          class="bg-light d-flex p-1 align-items-center border-bottom"
+                        >
+                          <span
+                            class="d-block p-1 bg-dark-lighten rounded me-1"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border-secondary border-opacity-25 rounded ms-auto"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                          ></span>
+                        </span>
+                        <span class="d-flex h-100 p-1 px-2">
+                          <span class="flex-shrink-0">
+                            <span
+                              class="bg-light d-flex h-100 flex-column p-1 px-2"
+                            >
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100"
+                              ></span>
+                            </span>
+                          </span>
+                        </span>
+                        <span class="bg-light d-block p-1 mt-auto px-2"></span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Detached</h5>
+                </div>
+              </div>
+            </div>
+
+            <h5 class="my-3 font-16 fw-bold">Topbar Color</h5>
+
+            <div class="row">
+              <div class="col-4">
+                <div class="form-check card-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="data-topbar-color"
+                    id="topbar-color-light"
+                    value="light"
+                  />
+                  <label
+                    class="form-check-label p-0 avatar-md w-100"
+                    for="topbar-color-light"
+                  >
+                    <div id="sidebar-size">
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 border-end flex-column p-1 px-2"
+                          >
+                            <span
+                              class="d-block p-1 bg-dark-lighten rounded mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+
+                    <div id="topnav-color">
+                      <span class="d-flex h-100 flex-column">
+                        <span
+                          class="bg-light d-flex p-1 align-items-center border-bottom border-secondary border-opacity-25"
+                        >
+                          <span
+                            class="d-block p-1 bg-dark-lighten rounded me-1"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border-secondary border-opacity-25 rounded ms-auto"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                          ></span>
+                        </span>
+                        <span class="bg-light d-block p-1"></span>
+                      </span>
+                    </div>
+                  </label>
+                </div>
+                <h5 class="font-14 text-center text-muted mt-2">Light</h5>
+              </div>
+
+              <div class="col-4" style="--ct-dark-rgb: 64, 73, 84;">
+                <div class="form-check card-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="data-topbar-color"
+                    id="topbar-color-dark"
+                    value="dark"
+                  />
+                  <label
+                    class="form-check-label p-0 avatar-md w-100"
+                    for="topbar-color-dark"
+                  >
+                    <div id="sidebar-size">
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 border-end flex-column p-1 px-2"
+                          >
+                            <span
+                              class="d-block p-1 bg-primary-lighten rounded mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-dark d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+
+                    <div id="topnav-color">
+                      <span class="d-flex h-100 flex-column">
+                        <span
+                          class="bg-dark d-flex p-1 align-items-center border-bottom border-secondary border-opacity-25"
+                        >
+                          <span
+                            class="d-block p-1 bg-primary-lighten rounded me-1"
+                          ></span>
+                          <span
+                            class="d-block border border-primary border-opacity-25 border-3 rounded ms-auto"
+                          ></span>
+                          <span
+                            class="d-block border border-primary border-opacity-25 border-3 rounded ms-1"
+                          ></span>
+                          <span
+                            class="d-block border border-primary border-opacity-25 border-3 rounded ms-1"
+                          ></span>
+                          <span
+                            class="d-block border border-primary border-opacity-25 border-3 rounded ms-1"
+                          ></span>
+                        </span>
+                        <span class="bg-light d-block p-1"></span>
+                      </span>
+                    </div>
+                  </label>
+                </div>
+                <h5 class="font-14 text-center text-muted mt-2">Dark</h5>
+              </div>
+
+              <div class="col-4">
+                <div class="form-check card-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="data-topbar-color"
+                    id="topbar-color-brand"
+                    value="brand"
+                  />
+                  <label
+                    class="form-check-label p-0 avatar-md w-100"
+                    for="topbar-color-brand"
+                  >
+                    <div id="sidebar-size">
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 border-end flex-column p-1 px-2"
+                          >
+                            <span
+                              class="d-block p-1 bg-dark-lighten rounded mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span
+                              class="bg-primary bg-gradient d-block p-1"
+                            ></span>
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+
+                    <div id="topnav-color">
+                      <span class="d-flex h-100 flex-column">
+                        <span
+                          class="bg-primary bg-gradient d-flex p-1 align-items-center border-bottom border-secondary border-opacity-25"
+                        >
+                          <span
+                            class="d-block p-1 bg-light opacity-25 rounded me-1"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border opacity-25 rounded ms-auto"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border opacity-25 rounded ms-1"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border opacity-25 rounded ms-1"
+                          ></span>
+                          <span
+                            class="d-block border border-3 border opacity-25 rounded ms-1"
+                          ></span>
+                        </span>
+                        <span class="bg-light d-block p-1"></span>
+                      </span>
+                    </div>
+                  </label>
+                </div>
+                <h5 class="font-14 text-center text-muted mt-2">Brand</h5>
+              </div>
+            </div>
+
+            <div>
+              <h5 class="my-3 font-16 fw-bold">Menu Color</h5>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-menu-color"
+                      id="leftbar-color-light"
+                      value="light"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="leftbar-color-light"
+                    >
+                      <div id="sidebar-size">
+                        <span class="d-flex h-100">
+                          <span class="flex-shrink-0">
+                            <span
+                              class="bg-light d-flex h-100 border-end flex-column p-1 px-2"
+                            >
+                              <span
+                                class="d-block p-1 bg-dark-lighten rounded mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                              ></span>
+                            </span>
+                          </span>
+                          <span class="flex-grow-1">
+                            <span class="d-flex h-100 flex-column">
+                              <span class="bg-light d-block p-1"></span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div id="topnav-color">
+                        <span class="d-flex h-100 flex-column">
+                          <span
+                            class="bg-light d-flex p-1 align-items-center border-bottom border-secondary border-opacity-25"
+                          >
+                            <span
+                              class="d-block p-1 bg-dark-lighten rounded me-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-auto"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                          </span>
+                          <span class="bg-light d-block p-1"></span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Light</h5>
+                </div>
+
+                <div class="col-4" style="--ct-dark-rgb: 64, 73, 84;">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-menu-color"
+                      id="leftbar-color-dark"
+                      value="dark"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="leftbar-color-dark"
+                    >
+                      <div id="sidebar-size">
+                        <span class="d-flex h-100">
+                          <span class="flex-shrink-0">
+                            <span
+                              class="bg-dark d-flex h-100 flex-column p-1 px-2"
+                            >
+                              <span
+                                class="d-block p-1 bg-dark-lighten rounded mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-secondary rounded border-opacity-25 border-3 w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-secondary rounded border-opacity-25 border-3 w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-secondary rounded border-opacity-25 border-3 w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border border-secondary rounded border-opacity-25 border-3 w-100 mb-1"
+                              ></span>
+                            </span>
+                          </span>
+                          <span class="flex-grow-1">
+                            <span class="d-flex h-100 flex-column">
+                              <span class="bg-light d-block p-1"></span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div id="topnav-color">
+                        <span class="d-flex h-100 flex-column">
+                          <span
+                            class="bg-light d-flex p-1 align-items-center border-bottom border-secondary border-primary border-opacity-25"
+                          >
+                            <span
+                              class="d-block p-1 bg-primary-lighten rounded me-1"
+                            ></span>
+                            <span
+                              class="d-block border border-secondary rounded border-opacity-25 border-3 ms-auto"
+                            ></span>
+                            <span
+                              class="d-block border border-secondary rounded border-opacity-25 border-3 ms-1"
+                            ></span>
+                            <span
+                              class="d-block border border-secondary rounded border-opacity-25 border-3 ms-1"
+                            ></span>
+                            <span
+                              class="d-block border border-secondary rounded border-opacity-25 border-3 ms-1"
+                            ></span>
+                          </span>
+                          <span class="bg-dark d-block p-1"></span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Dark</h5>
+                </div>
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-menu-color"
+                      id="leftbar-color-brand"
+                      value="brand"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="leftbar-color-brand"
+                    >
+                      <div id="sidebar-size">
+                        <span class="d-flex h-100">
+                          <span class="flex-shrink-0">
+                            <span
+                              class="bg-primary bg-gradient d-flex h-100 flex-column p-1 px-2"
+                            >
+                              <span
+                                class="d-block p-1 bg-light-lighten rounded mb-1"
+                              ></span>
+                              <span
+                                class="d-block border opacity-25 rounded border-3 w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border opacity-25 rounded border-3 w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border opacity-25 rounded border-3 w-100 mb-1"
+                              ></span>
+                              <span
+                                class="d-block border opacity-25 rounded border-3 w-100 mb-1"
+                              ></span>
+                            </span>
+                          </span>
+                          <span class="flex-grow-1">
+                            <span class="d-flex h-100 flex-column">
+                              <span class="bg-light d-block p-1"></span>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div id="topnav-color">
+                        <span class="d-flex h-100 flex-column">
+                          <span
+                            class="bg-light d-flex p-1 align-items-center border-bottom border-secondary"
+                          >
+                            <span
+                              class="d-block p-1 bg-dark-lighten rounded me-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-auto"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded ms-1"
+                            ></span>
+                          </span>
+                          <span
+                            class="bg-primary bg-gradient d-block p-1"
+                          ></span>
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Brand</h5>
+                </div>
+              </div>
+            </div>
+
+            <div id="sidebar-size">
+              <h5 class="my-3 font-16 fw-bold">Sidebar Size</h5>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidenav-size"
+                      id="leftbar-size-default"
+                      value="default"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="leftbar-size-default"
+                    >
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 border-end flex-column p-1 px-2"
+                          >
+                            <span
+                              class="d-block p-1 bg-dark-lighten rounded mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Default</h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidenav-size"
+                      id="leftbar-size-compact"
+                      value="compact"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="leftbar-size-compact"
+                    >
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 border-end flex-column p-1"
+                          >
+                            <span
+                              class="d-block p-1 bg-dark-lighten rounded mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Compact</h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidenav-size"
+                      id="leftbar-size-small"
+                      value="condensed"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="leftbar-size-small"
+                    >
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 border-end flex-column"
+                            style="padding: 2px;"
+                          >
+                            <span
+                              class="d-block p-1 bg-dark-lighten rounded mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">Condensed</h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidenav-size"
+                      id="leftbar-size-small-hover"
+                      value="sm-hover"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="leftbar-size-small-hover"
+                    >
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 border-end flex-column"
+                            style="padding: 2px;"
+                          >
+                            <span
+                              class="d-block p-1 bg-dark-lighten rounded mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                            <span
+                              class="d-block border border-3 border-secondary border-opacity-25 rounded w-100 mb-1"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">
+                    Hover View
+                  </h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidenav-size"
+                      id="leftbar-size-full"
+                      value="full"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="leftbar-size-full"
+                    >
+                      <span class="d-flex h-100">
+                        <span class="flex-shrink-0">
+                          <span class="d-flex h-100 flex-column">
+                            <span
+                              class="d-block p-1 bg-dark-lighten mb-1"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">
+                    Full Layout
+                  </h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidenav-size"
+                      id="leftbar-size-fullscreen"
+                      value="fullscreen"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="leftbar-size-fullscreen"
+                    >
+                      <span class="d-flex h-100">
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="font-14 text-center text-muted mt-2">
+                    Fullscreen Layout
+                  </h5>
+                </div>
+              </div>
+            </div>
+
+            <div id="layout-position">
+              <h5 class="my-3 font-16 fw-bold">Layout Position</h5>
+
+              <div class="btn-group radio" role="group">
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="data-layout-position"
+                  id="layout-position-fixed"
+                  value="fixed"
+                />
+                <label
+                  class="btn btn-soft-primary w-sm"
+                  for="layout-position-fixed"
+                  >Fixed</label
+                >
+
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="data-layout-position"
+                  id="layout-position-scrollable"
+                  value="scrollable"
+                />
+                <label
+                  class="btn btn-soft-primary w-sm ms-0"
+                  for="layout-position-scrollable"
+                  >Scrollable</label
+                >
+              </div>
+            </div>
+
+            <div id="sidebar-user">
+              <div
+                class="d-flex justify-content-between align-items-center mt-3"
+              >
+                <label class="font-16 fw-bold m-0" for="sidebaruser-check"
+                  >Sidebar User Info</label
+                >
+                <div class="form-check form-switch">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="sidebar-user"
+                    id="sidebaruser-check"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="offcanvas-footer border-top p-3 text-center">
+        <div class="row">
+          <div class="col-6">
+            <button type="button" class="btn btn-light w-100" id="reset-layout">
+              Reset
+            </button>
+          </div>
+          <div class="col-6">
+            <a
+              href="#"
+              target="_blank"
+              role="button"
+              class="btn btn-primary w-100"
+              >Done</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="notify-me">
+      <div
+        class="d-flex align-items-center p-3 offcanvas-header"
+        style="border-bottom: 1px solid grey;"
+      >
+        <h5 class="m-0">Signals</h5>
+        <button
+          type="button"
+          class="btn-close ms-auto"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="offcanvas-body notify p-0">
+        <div class="p30 aligncenter fontsmooth">
+          <img
+            class="signal-on-board-image mB20 mT60"
+            src="../assets/images/notification.gif"
+          />
+          <h5
+            class="crm-font-bold f22 m0 mB18 signalTextClr aligncenter"
+            style="font-size: 1.5rem;"
+          >
+            Manage Signals
+          </h5>
+          <p class="w90per aligncenter m0Auto signal-on-board-text">
+            Receive real-time notifications across applications
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="info-alert"
+      class="modal fade"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body p-4">
+            <div class="text-center">
+              <p class="mt-2"><i class="ri-check-line text-info h1"></i></p>
+              <img src="../assets/images/admin.png" style="width: 150px;" />
+
+              <p class="mt-3"></p>
+              <button
+                type="button"
+                class="btn btn-info my-2"
+                data-bs-dismiss="modal"
+              >
+                Okay
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vendor js -->
+    <script src="../assets/js/vendor.min.js"></script>
+
+    <!-- Daterangepicker js -->
+    <script src="../assets/vendor/daterangepicker/moment.min.js"></script>
+    <script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+
+    <!-- Apex Charts js -->
+    <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <!-- Apex Chart Pie Demo js -->
+    <script src="../assets/js/pages/demo.apex-pie.js"></script>
+
+    <!-- Vector Map js -->
+    <script src="../assets/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="../assets/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- Dashboard App js -->
+    <script src="../assets/js/pages/demo.dashboard.js"></script>
+
+    <!-- App js -->
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/js/custom.js"></script>
+
+    <!-- Bootstrap Wizard Form js -->
+    <script src="../assets/vendor/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+
+    <!-- Wizard Form Demo js -->
+    <script src="../assets/js/pages/demo.form-wizard.js"></script>
+
+    <script>
+      function myFunction() {
+        alert("Logout Successfully!");
+      }
+    </script>
+
+    <script>
+      function validateForm() {
+        // Retrieve all input field values
+        var employeeName = document.getElementById("AEM_EN").value.trim();
+        var employeeCode = document.getElementById("AEM_EC").value.trim();
+        var gender = document.getElementById("AEM_DD_GN").value.trim();
+        var company = document.getElementById("AEM_DD_CM").value.trim();
+        var departmentCategory = document
+          .getElementById("AEM_DD_DC")
+          .value.trim();
+        var departmentName = document.getElementById("AEM_DD_DN").value.trim();
+        var departmentDesignation = document
+          .getElementById("AEM_DD_DD")
+          .value.trim();
+        var shift = document.getElementById("AEM_DD_SF").value.trim();
+        var shiftStartTime = document.getElementById("AEM_ST").value.trim();
+        var shiftEndTime = document.getElementById("AEM_ET").value.trim();
+        var educationalQualification = document
+          .getElementById("AEM_DD_EQ")
+          .value.trim();
+        var department = document.getElementById("AEM_DP").value.trim();
+        var experience = document.getElementById("AEM_DD_EX").value.trim();
+        var previousCompany = document.getElementById("AEM_PC").value.trim();
+        var relevantExpYears = document.getElementById("AEM_EY").value.trim();
+        var relevantExpMonths = document.getElementById("AEM_EM").value.trim();
+        var dob = document.getElementById("AEM_DB").value.trim();
+        var placeOfBirth = document.getElementById("AEM_PB").value.trim();
+        var bloodGroup = document.getElementById("AEM_BG").value.trim();
+        var dateOfJoining = document.getElementById("AEM_DJ").value.trim();
+        var employmentType = document.getElementById("AEM_DD_ET").value.trim();
+        var employmentStatus = document
+          .getElementById("AEM_DD_ES")
+          .value.trim();
+        var personalMobile = document.getElementById("AEM_PM").value.trim();
+        var workMobile = document.getElementById("AEM_WM").value.trim();
+        var extension = document.getElementById("AEM_ES").value.trim();
+        var bioMetricId = document.getElementById("AEM_ID").value.trim();
+
+        // Check if any of the required fields are empty
+        if (
+          employeeName === "" ||
+          employeeCode === "" ||
+          gender === "" ||
+          company === "" ||
+          departmentCategory === "" ||
+          departmentName === "" ||
+          departmentDesignation === "" ||
+          shift === "" ||
+          shiftStartTime === "" ||
+          shiftEndTime === "" ||
+          educationalQualification === "" ||
+          department === "" ||
+          experience === "" ||
+          previousCompany === "" ||
+          relevantExpYears === "" ||
+          relevantExpMonths === "" ||
+          dob === "" ||
+          placeOfBirth === "" ||
+          bloodGroup === "" ||
+          dateOfJoining === "" ||
+          employmentType === "" ||
+          employmentStatus === "" ||
+          personalMobile === "" ||
+          workMobile === "" ||
+          extension === "" ||
+          bioMetricId === ""
+        ) {
+          showAlertModal("Please fill out all required fields in Primary Details.");
+          return false;
+        }
+
+        // Retrieve all input field values
+        var fatherName = document.getElementById("AEM_FN").value.trim();
+        var motherName = document.getElementById("AEM_MN").value.trim();
+        var residentialAddress = document.getElementById("AEM_RA").value.trim();
+        var addressLine1 = document.getElementById("AEM_AD").value.trim();
+        var addressLine2 = document.getElementById("AEM_ADD").value.trim();
+        var city = document.getElementById("AEM_CIT").value.trim();
+        var district = document.getElementById("AEM_DIS").value.trim();
+        var state = document.getElementById("AEM_STA").value.trim();
+        var pincode = document.getElementById("AEM_PIN").value.trim();
+        var country = document.getElementById("AEM_COU").value.trim();
+        var permanentAddress = document.getElementById("AEM_PA").value.trim();
+        var permanentAddressLine1 = document
+          .getElementById("AEM_PAL")
+          .value.trim();
+        var permanentAddressLine2 = document
+          .getElementById("AEM_PALL")
+          .value.trim();
+        var permanentCity = document.getElementById("AEM_PCIT").value.trim();
+        var permanentDistrict = document
+          .getElementById("AEM_PDIS")
+          .value.trim();
+        var permanentState = document.getElementById("AEM_PSTA").value.trim();
+        var permanentPincode = document.getElementById("AEM_PPIN").value.trim();
+        var permanentCountry = document.getElementById("AEM_PCOU").value.trim();
+        var contactNumber = document.getElementById("AEM_CTN").value.trim();
+        var email = document.getElementById("AEM_EMAIL").value.trim();
+
+        // Check if any of the required fields are empty
+        if (
+          fatherName === "" ||
+          motherName === "" ||
+          residentialAddress === "" ||
+          addressLine1 === "" ||
+          addressLine2 === "" ||
+          city === "" ||
+          district === "" ||
+          state === "" ||
+          pincode === "" ||
+          country === "" ||
+          permanentAddress === "" ||
+          permanentAddressLine1 === "" ||
+          permanentAddressLine2 === "" ||
+          permanentCity === "" ||
+          permanentDistrict === "" ||
+          permanentState === "" ||
+          permanentPincode === "" ||
+          permanentCountry === "" ||
+          contactNumber === "" ||
+          email === ""
+        ) {
+          showAlertModal("Please fill out all required fields in Personal Details.");
+          return false;
+        }
+        // Retrieve all input field values
+        var aadharCard = document.getElementById("AEM_AC").value.trim();
+        var voterID = document.getElementById("AEM_VID").value.trim();
+        var recordStatus = document.getElementById("AEM_RS").value.trim();
+        var recordLocation = document.getElementById("AEM_RL").value.trim();
+        var remarks = document.getElementById("AEM_RK").value.trim();
+        var uanNumber = document.getElementById("AEM_UAN").value.trim();
+        var loginID = document.getElementById("AEM_LID").value.trim();
+        var password = document.getElementById("AEM_PAS").value.trim();
+        var uanLoginPhone = document.getElementById("AEM_ULP").value.trim();
+        var aadharLinkPhone = document.getElementById("AEM_ALP").value.trim();
+        var bankName = document.getElementById("AEM_BN").value.trim();
+        var branch = document.getElementById("AEM_BR").value.trim();
+        var ifscCode = document.getElementById("AEM_IFS").value.trim();
+        var accountNo = document.getElementById("AEM_ATN").value.trim();
+        var DocuMent = document.getElementById("AEM_DOC").value.trim();
+        // Check if any of the required fields are empty
+        if (
+         aadharCard === "" ||
+          voterID === "" ||
+          recordStatus === "" ||
+          recordLocation === "" ||
+          remarks === "" ||
+          uanNumber === "" ||
+          loginID === "" ||
+          password === "" ||
+          uanLoginPhone === "" ||
+          aadharLinkPhone === "" ||
+          bankName === "" ||
+          branch === "" ||
+          ifscCode === "" ||
+          accountNo === "" ||
+          DocuMent === ""
+        ) {
+          showAlertModal("Please fill out all required fields in Official Details.");
+          return false;
+        }
+
+        // Display modal if validation is successful
+        $("#info-alert-modal2").modal("show");
+        // Redirect page based on the action
+        if (action === "save") {
+          setTimeout(function () {
+            window.location.href = "employees.html";
+          }, 3000);
+        }
+
+        // Prevent form submission
+        return false;
+      }
+
+      function showAlertModal(message) {
+        var modalBody = document.querySelector(
+          "#info-alert-modal2 .modal-body"
+        );
+        modalBody.innerHTML =
+          '<div class="text-center">' +
+          '<p class="mt-2"><i class="ri-alert-line text-info h1"></i></p>' +
+          '<img src="../assets/images/admin.png" style="width: 150px;">' +
+          '<p style="padding-top: 15px;">' +
+          message +
+          "</p>" +
+          '<button type="button" class="btn btn-info my-2" data-bs-dismiss="modal">Okay</button>' +
+          "</div>";
+        $("#info-alert-modal2").modal("show");
+      }
+    </script>
+
+<script>
+  // Function to fetch companies and populate the select options
+  async function loadCompanies() {
+    try {
+      const response = await fetch('/employee/companies');
+      const companies = await response.json();
+
+      const select = document.getElementById('company');
+      companies.forEach(company => {
+        const option = document.createElement('option');
+        option.value = company.Company_Name;
+        option.textContent = company.Company_Name;
+        select.appendChild(option);
+      });
+    } catch (error) {
+      console.error('Error loading companies:', error);
+    }
+  }
+
+  // Load companies when the page loads
+  window.onload = loadCompanies;
+</script>
+<script>
+  function validateForm(action) {
+      let isValid = true;
+  
+      // Clear previous errors
+      document.querySelectorAll('.form-control').forEach(field => {
+          field.classList.remove('border-danger');
+          const errorMessage = field.nextElementSibling;
+          if (errorMessage) {
+              errorMessage.remove();
+          }
+      });
+  
+      // Check for empty fields
+      document.querySelectorAll('.form-control[required]').forEach(field => {
+          if (field.value.trim() === '') {
+              field.classList.add('border-danger');
+              displayError(field, 'This field is required');
+              isValid = false;
+          }
+      });
+  
+     // Validate Phone Number
+     const phoneField = document.querySelector('input[name="CCP_PHN"]');
+        if (phoneField.value === '' || !/^\d{10}$/.test(phoneField.value)) {
+            phoneField.classList.add('border-danger');
+            displayError(phoneField, 'Please enter a valid 10-digit phone number');
+            isValid = false;
+        }
+    
+        // Validate Email
+        const emailField = document.querySelector('input[name="CAT_CEOEM",name="CAT_EM",name="CAT_ACEMLS",name="CAT_PEML",name="CAT_SEML"]');
+        if (emailField.value === '' || !/\S+@\S+\.\S+/.test(emailField.value)) {
+            emailField.classList.add('border-danger');
+            displayError(emailField, 'Please enter a valid email address');
+            isValid = false;
+        }
+  
+      return isValid;
+  }
+  
+  function displayError(field, message) {
+      const error = document.createElement('div');
+      error.classList.add('text-danger');
+      error.style.fontSize = 'small';
+      error.textContent = message;
+      field.parentElement.appendChild(error);
+  }
+  </script>
+
+  <script>
+    fetch('/employee/getGender')
+      .then(response => response.json())
+      .then(data => {
+          const documentTypeSelect = document.getElementById('AEM_DD_GN');
+          data.forEach(type => {
+              const option = document.createElement('option');
+              option.value = type.Column_Description;
+              option.textContent = type.Column_Description;
+              documentTypeSelect.appendChild(option);
+          });
+      });
+    fetch('/employee/getDeptCat')
+      .then(response => response.json())
+      .then(data => {
+          const documentTypeSelect = document.getElementById('AEM_DD_DD');
+          data.forEach(type => {
+              const option = document.createElement('option');
+              option.value = type.Column_Description;
+              option.textContent = type.Column_Description;
+              documentTypeSelect.appendChild(option);
+          });
+      });
+    fetch('/employee/getDeptCat')
+      .then(response => response.json())
+      .then(data => {
+          const documentTypeSelect = document.getElementById('AEM_DD_DC');
+          data.forEach(type => {
+              const option = document.createElement('option');
+              option.value = type.Column_Description;
+              option.textContent = type.Column_Description;
+              documentTypeSelect.appendChild(option);
+          });
+      });
+    fetch('/employee/getDeptName')
+      .then(response => response.json())
+      .then(data => {
+          const documentTypeSelect = document.getElementById('AEM_DD_DN');
+          data.forEach(type => {
+              const option = document.createElement('option');
+              option.value = type.Column_Description;
+              option.textContent = type.Column_Description;
+              documentTypeSelect.appendChild(option);
+          });
+      });
+    fetch('/employee/getShift')
+      .then(response => response.json())
+      .then(data => {
+          const documentTypeSelect = document.getElementById('AEM_DD_SF');
+          data.forEach(type => {
+              const option = document.createElement('option');
+              option.value = type.Column_Description;
+              option.textContent = type.Column_Description;
+              documentTypeSelect.appendChild(option);
+          });
+      });
+    fetch('/employee/getEduQul')
+      .then(response => response.json())
+      .then(data => {
+          const documentTypeSelect = document.getElementById('AEM_DD_EQ');
+          data.forEach(type => {
+              const option = document.createElement('option');
+              option.value = type.Column_Description;
+              option.textContent = type.Column_Description;
+              documentTypeSelect.appendChild(option);
+          });
+      });
+    fetch('/employee/getExp')
+      .then(response => response.json())
+      .then(data => {
+          const documentTypeSelect = document.getElementById('AEM_DD_EX');
+          data.forEach(type => {
+              const option = document.createElement('option');
+              option.value = type.Column_Description;
+              option.textContent = type.Column_Description;
+              documentTypeSelect.appendChild(option);
+          });
+      });
+    fetch('/employee/getEmpType')
+      .then(response => response.json())
+      .then(data => {
+          const documentTypeSelect = document.getElementById('AEM_DD_ET');
+          data.forEach(type => {
+              const option = document.createElement('option');
+              option.value = type.Column_Description;
+              option.textContent = type.Column_Description;
+              documentTypeSelect.appendChild(option);
+          });
+      });
+    fetch('/employee/getEmpStatus')
+      .then(response => response.json())
+      .then(data => {
+          const documentTypeSelect = document.getElementById('AEM_DD_ES');
+          data.forEach(type => {
+              const option = document.createElement('option');
+              option.value = type.Column_Description;
+              option.textContent = type.Column_Description;
+              documentTypeSelect.appendChild(option);
+          });
+      });
+  </script>
+  </body>
+</html>
