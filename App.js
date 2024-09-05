@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
-const MySQLStore = require('express-mysql-session')(session); 
 const path = require('path');
 const authRoutes = require('./routes/auth');
 const companyRoutes = require('./routes/companyRoutes');
