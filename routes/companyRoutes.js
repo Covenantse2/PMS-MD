@@ -76,7 +76,7 @@ router.get('/edit/:id', async (req, res) => {
 });
 
 // Route for updating a company by ID
-router.put('/putEdit/:companyId', async (req, res) => {
+router.put('/putEdit/:companyId', async (req, sres) => {
     const companyId = req.params.companyId;
     const updatedCompany = req.body;
 

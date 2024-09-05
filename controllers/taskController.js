@@ -4,6 +4,7 @@ const path = require('path');
 
 // Add Task
 exports.addTask = async (req, res) => {
+    console.log('Session:', req.session);
     const {
         ATK_DD_EXE, // Executive name selected from the form
         CMP_ID,
@@ -18,7 +19,7 @@ exports.addTask = async (req, res) => {
         ACOW,
         DSNG 
     } = req.body;
-
+    let conn;
     // Ensure session data is available
     if (!req.session || !req.session.user) {
         return res.status(401).send('Unauthorized: No session data found');
@@ -38,6 +39,7 @@ exports.addTask = async (req, res) => {
     let secondaryRole, secondaryEmail, secondaryID, secondaryName;
 
     try {
+        conn = await db.getConnection();
         const [executive] = await db.query(
             'SELECT Department_Desigination, Email, Employee_Code, Employee_Name FROM employee WHERE Employee_Name = ?',
             [ATK_DD_EXE]
@@ -54,6 +56,8 @@ exports.addTask = async (req, res) => {
     } catch (error) {
         console.error('Error fetching executive details:', error);
         return res.status(500).send('Server error');
+    }finally {
+        if (conn) conn.end();
     }
 
     // Validation: Check if the secondary role is "Executive"

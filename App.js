@@ -13,6 +13,8 @@ const executiveRoute = require('./routes/executiveRoutes');
 const addTaskRoute = require('./routes/taskRoutes');
 const taskRoutes = require('./routes/extaskRoutes');
 const productRoutes = require('./routes/products');
+const chatRoute = require('./routes/chatRoute');
+const MySQLStore = require('express-mysql-session')(session);
 const bodyParser = require('body-parser');
 const db = require('./models/db');
 
@@ -37,14 +39,28 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 // Session middleware
+// MySQL session store configuration (optional)
+const sessionStore = new MySQLStore({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
+});
+
+// Session middleware setup
 app.use(session({
-  secret: 'your-secret-key',
+  secret: 'your-secret-key',  // Replace with your own secret key
   resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false } // Set `secure: true` if using HTTPS
+  saveUninitialized: false,  // Only save session when it's modified
+  store: sessionStore,  // Use MySQL store to persist sessions
+  cookie: { 
+      maxAge: 1000 * 60 * 60 * 24,  // 1 day session
+      secure: false  // Set to true if using HTTPS
+  }
 }));
 
 // Routes
+app.use('/chat', chatRoute);
 app.use('/products', productRoutes);
 app.use('/tasks', taskRoutes);
 app.use('/addTask', addTaskRoute);
